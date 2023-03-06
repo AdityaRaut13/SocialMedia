@@ -1,0 +1,1110 @@
+[
+  {
+    "name": "aarch64",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aarch64/aarch64-original.svg"
+  },
+  {
+    "name": "adonisjs",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/adonisjs/adonisjs-original.svg"
+  },
+  {
+    "name": "aftereffects",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aftereffects/aftereffects-plain.svg"
+  },
+  {
+    "name": "amazonwebservices",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+  },
+  {
+    "name": "anaconda",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/anaconda/anaconda-original.svg"
+  },
+  {
+    "name": "android",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg"
+  },
+  {
+    "name": "androidstudio",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-plain.svg"
+  },
+  {
+    "name": "angularjs",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-plain.svg"
+  },
+  {
+    "name": "ansible",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-plain.svg"
+  },
+  {
+    "name": "apache",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-line-wordmark.svg"
+  },
+  {
+    "name": "apachekafka",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original-wordmark.svg"
+  },
+  {
+    "name": "appcelerator",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/appcelerator/appcelerator-original-wordmark.svg"
+  },
+  {
+    "name": "apple",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg"
+  },
+  {
+    "name": "appwrite",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/appwrite/appwrite-original-wordmark.svg"
+  },
+  {
+    "name": "arduino",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-plain-wordmark.svg"
+  },
+  {
+    "name": "argocd",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/argocd/argocd-plain-wordmark.svg"
+  },
+  {
+    "name": "atom",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/atom/atom-original-wordmark.svg"
+  },
+  {
+    "name": "azure",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-plain-wordmark.svg"
+  },
+  {
+    "name": "babel",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/babel/babel-original.svg"
+  },
+  {
+    "name": "backbonejs",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/backbonejs/backbonejs-original-wordmark.svg"
+  },
+  {
+    "name": "bamboo",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bamboo/bamboo-original-wordmark.svg"
+  },
+  {
+    "name": "bash",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg"
+  },
+  {
+    "name": "behance",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/behance/behance-plain.svg"
+  },
+  {
+    "name": "bitbucket",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bitbucket/bitbucket-original.svg"
+  },
+  {
+    "name": "blender",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original-wordmark.svg"
+  },
+  {
+    "name": "bootstrap",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original-wordmark.svg"
+  },
+  {
+    "name": "bower",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bower/bower-original.svg"
+  },
+  {
+    "name": "bulma",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bulma/bulma-plain.svg"
+  },
+  {
+    "name": "c",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-line.svg"
+  },
+  {
+    "name": "cakephp",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cakephp/cakephp-original-wordmark.svg"
+  },
+  {
+    "name": "canva",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg"
+  },
+  {
+    "name": "centos",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/centos/centos-original-wordmark.svg"
+  },
+  {
+    "name": "ceylon",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ceylon/ceylon-plain.svg"
+  },
+  {
+    "name": "chrome",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg"
+  },
+  {
+    "name": "circleci",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/circleci/circleci-plain.svg"
+  },
+  {
+    "name": "clojure",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/clojure/clojure-original.svg"
+  },
+  {
+    "name": "clojurescript",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/clojurescript/clojurescript-original.svg"
+  },
+  {
+    "name": "cmake",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cmake/cmake-plain-wordmark.svg"
+  },
+  {
+    "name": "codecov",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/codecov/codecov-plain.svg"
+  },
+  {
+    "name": "codeigniter",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/codeigniter/codeigniter-plain-wordmark.svg"
+  },
+  {
+    "name": "codepen",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/codepen/codepen-original-wordmark.svg"
+  },
+  {
+    "name": "coffeescript",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/coffeescript/coffeescript-original.svg"
+  },
+  {
+    "name": "composer",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/composer/composer-original.svg"
+  },
+  {
+    "name": "confluence",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/confluence/confluence-original.svg"
+  },
+  {
+    "name": "couchdb",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/couchdb/couchdb-plain-wordmark.svg"
+  },
+  {
+    "name": "cplusplus",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-line.svg"
+  },
+  {
+    "name": "crystal",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/crystal/crystal-original.svg"
+  },
+  {
+    "name": "csharp",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
+  },
+  {
+    "name": "css3",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg"
+  },
+  {
+    "name": "cucumber",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cucumber/cucumber-plain.svg"
+  },
+  {
+    "name": "d3js",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/d3js/d3js-original.svg"
+  },
+  {
+    "name": "dart",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg"
+  },
+  {
+    "name": "debian",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/debian/debian-original.svg"
+  },
+  {
+    "name": "denojs",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/denojs/denojs-original-wordmark.svg"
+  },
+  {
+    "name": "devicon",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/devicon/devicon-plain.svg"
+  },
+  {
+    "name": "digitalocean",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/digitalocean/digitalocean-original.svg"
+  },
+  {
+    "name": "discordjs",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/discordjs/discordjs-original-wordmark.svg"
+  },
+  {
+    "name": "django",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain-wordmark.svg"
+  },
+  {
+    "name": "docker",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg"
+  },
+  {
+    "name": "doctrine",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/doctrine/doctrine-original-wordmark.svg"
+  },
+  {
+    "name": "dot-net",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original-wordmark.svg"
+  },
+  {
+    "name": "dotnetcore",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg"
+  },
+  {
+    "name": "dropwizard",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dropwizard/dropwizard-original.svg"
+  },
+  {
+    "name": "drupal",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/drupal/drupal-plain-wordmark.svg"
+  },
+  {
+    "name": "electron",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/electron/electron-original.svg"
+  },
+  {
+    "name": "eleventy",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eleventy/eleventy-original.svg"
+  },
+  {
+    "name": "elixir",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elixir/elixir-original-wordmark.svg"
+  },
+  {
+    "name": "elm",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elm/elm-original.svg"
+  },
+  {
+    "name": "embeddedc",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/embeddedc/embeddedc-plain.svg"
+  },
+  {
+    "name": "ember",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ember/ember-original-wordmark.svg"
+  },
+  {
+    "name": "erlang",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/erlang/erlang-plain-wordmark.svg"
+  },
+  {
+    "name": "eslint",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eslint/eslint-original-wordmark.svg"
+  },
+  {
+    "name": "express",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+  },
+  {
+    "name": "facebook",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-plain.svg"
+  },
+  {
+    "name": "fastapi",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-plain-wordmark.svg"
+  },
+  {
+    "name": "feathersjs",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/feathersjs/feathersjs-original.svg"
+  },
+  {
+    "name": "fedora",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fedora/fedora-original.svg"
+  },
+  {
+    "name": "figma",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+  },
+  {
+    "name": "filezilla",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/filezilla/filezilla-plain.svg"
+  },
+  {
+    "name": "firebase",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain-wordmark.svg"
+  },
+  {
+    "name": "firefox",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firefox/firefox-plain-wordmark.svg"
+  },
+  {
+    "name": "flask",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg"
+  },
+  {
+    "name": "flutter",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+  },
+  {
+    "name": "foundation",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/foundation/foundation-plain.svg"
+  },
+  {
+    "name": "fsharp",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fsharp/fsharp-original.svg"
+  },
+  {
+    "name": "gatling",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gatling/gatling-plain.svg"
+  },
+  {
+    "name": "gatsby",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gatsby/gatsby-plain.svg"
+  },
+  {
+    "name": "gcc",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gcc/gcc-plain.svg"
+  },
+  {
+    "name": "gentoo",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gentoo/gentoo-plain-wordmark.svg"
+  },
+  {
+    "name": "gimp",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gimp/gimp-plain-wordmark.svg"
+  },
+  {
+    "name": "git",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original-wordmark.svg"
+  },
+  {
+    "name": "github",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
+  },
+  {
+    "name": "gitlab",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-plain-wordmark.svg"
+  },
+  {
+    "name": "gitter",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitter/gitter-plain.svg"
+  },
+  {
+    "name": "go",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-plain.svg"
+  },
+  {
+    "name": "godot",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/godot/godot-original.svg"
+  },
+  {
+    "name": "google",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-plain-wordmark.svg"
+  },
+  {
+    "name": "googlecloud",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original-wordmark.svg"
+  },
+  {
+    "name": "gradle",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gradle/gradle-plain.svg"
+  },
+  {
+    "name": "grafana",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg"
+  },
+  {
+    "name": "grails",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grails/grails-plain.svg"
+  },
+  {
+    "name": "graphql",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg"
+  },
+  {
+    "name": "groovy",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/groovy/groovy-plain.svg"
+  },
+  {
+    "name": "grunt",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grunt/grunt-plain-wordmark.svg"
+  },
+  {
+    "name": "gulp",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gulp/gulp-plain.svg"
+  },
+  {
+    "name": "handlebars",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/handlebars/handlebars-original.svg"
+  },
+  {
+    "name": "haskell",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/haskell/haskell-plain-wordmark.svg"
+  },
+  {
+    "name": "haxe",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/haxe/haxe-original.svg"
+  },
+  {
+    "name": "heroku",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-plain-wordmark.svg"
+  },
+  {
+    "name": "html5",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg"
+  },
+  {
+    "name": "hugo",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hugo/hugo-original.svg"
+  },
+  {
+    "name": "ie10",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ie10/ie10-original.svg"
+  },
+  {
+    "name": "ifttt",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ifttt/ifttt-original.svg"
+  },
+  {
+    "name": "illustrator",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-line.svg"
+  },
+  {
+    "name": "inkscape",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/inkscape/inkscape-plain.svg"
+  },
+  {
+    "name": "intellij",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-plain-wordmark.svg"
+  },
+  {
+    "name": "ionic",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original-wordmark.svg"
+  },
+  {
+    "name": "jamstack",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jamstack/jamstack-original-wordmark.svg"
+  },
+  {
+    "name": "jasmine",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jasmine/jasmine-plain-wordmark.svg"
+  },
+  {
+    "name": "java",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg"
+  },
+  {
+    "name": "javascript",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg"
+  },
+  {
+    "name": "jeet",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jeet/jeet-plain-wordmark.svg"
+  },
+  {
+    "name": "jenkins",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-plain.svg"
+  },
+  {
+    "name": "jest",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg"
+  },
+  {
+    "name": "jetbrains",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jetbrains/jetbrains-original.svg"
+  },
+  {
+    "name": "jira",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg"
+  },
+  {
+    "name": "jquery",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-plain-wordmark.svg"
+  },
+  {
+    "name": "julia",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/julia/julia-original.svg"
+  },
+  {
+    "name": "jupyter",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg"
+  },
+  {
+    "name": "k3s",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/k3s/k3s-original.svg"
+  },
+  {
+    "name": "kaggle",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kaggle/kaggle-original-wordmark.svg"
+  },
+  {
+    "name": "karma",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/karma/karma-original.svg"
+  },
+  {
+    "name": "knockout",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/knockout/knockout-plain-wordmark.svg"
+  },
+  {
+    "name": "kotlin",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-plain.svg"
+  },
+  {
+    "name": "krakenjs",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/krakenjs/krakenjs-original.svg"
+  },
+  {
+    "name": "kubernetes",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain-wordmark.svg"
+  },
+  {
+    "name": "labview",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/labview/labview-original.svg"
+  },
+  {
+    "name": "laravel",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain-wordmark.svg"
+  },
+  {
+    "name": "latex",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/latex/latex-original.svg"
+  },
+  {
+    "name": "less",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/less/less-plain-wordmark.svg"
+  },
+  {
+    "name": "linkedin",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original-wordmark.svg"
+  },
+  {
+    "name": "linux",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-plain.svg"
+  },
+  {
+    "name": "lua",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-plain-wordmark.svg"
+  },
+  {
+    "name": "magento",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/magento/magento-original.svg"
+  },
+  {
+    "name": "markdown",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg"
+  },
+  {
+    "name": "materialui",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-plain.svg"
+  },
+  {
+    "name": "matlab",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-plain.svg"
+  },
+  {
+    "name": "maya",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maya/maya-plain-wordmark.svg"
+  },
+  {
+    "name": "meteor",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/meteor/meteor-original-wordmark.svg"
+  },
+  {
+    "name": "microsoftsqlserver",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg"
+  },
+  {
+    "name": "minitab",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/minitab/minitab-original.svg"
+  },
+  {
+    "name": "mocha",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mocha/mocha-plain.svg"
+  },
+  {
+    "name": "modx",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/modx/modx-plain-wordmark.svg"
+  },
+  {
+    "name": "mongodb",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-plain-wordmark.svg"
+  },
+  {
+    "name": "moodle",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/moodle/moodle-plain-wordmark.svg"
+  },
+  {
+    "name": "msdos",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/msdos/msdos-original.svg"
+  },
+  {
+    "name": "mysql",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-plain.svg"
+  },
+  {
+    "name": "neo4j",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/neo4j/neo4j-original.svg"
+  },
+  {
+    "name": "nestjs",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg"
+  },
+  {
+    "name": "networkx",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/networkx/networkx-original.svg"
+  },
+  {
+    "name": "nextjs",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-line.svg"
+  },
+  {
+    "name": "nginx",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg"
+  },
+  {
+    "name": "nixos",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nixos/nixos-original-wordmark.svg"
+  },
+  {
+    "name": "nodejs",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg"
+  },
+  {
+    "name": "nodewebkit",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodewebkit/nodewebkit-plain-wordmark.svg"
+  },
+  {
+    "name": "npm",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg"
+  },
+  {
+    "name": "nuget",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuget/nuget-original.svg"
+  },
+  {
+    "name": "numpy",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg"
+  },
+  {
+    "name": "nuxtjs",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original-wordmark.svg"
+  },
+  {
+    "name": "objectivec",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/objectivec/objectivec-plain.svg"
+  },
+  {
+    "name": "ocaml",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ocaml/ocaml-plain-wordmark.svg"
+  },
+  {
+    "name": "openal",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openal/openal-plain.svg"
+  },
+  {
+    "name": "opencv",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg"
+  },
+  {
+    "name": "opengl",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opengl/opengl-plain.svg"
+  },
+  {
+    "name": "opensuse",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opensuse/opensuse-plain-wordmark.svg"
+  },
+  {
+    "name": "opera",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opera/opera-plain.svg"
+  },
+  {
+    "name": "oracle",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg"
+  },
+  {
+    "name": "packer",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/packer/packer-original-wordmark.svg"
+  },
+  {
+    "name": "pandas",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original-wordmark.svg"
+  },
+  {
+    "name": "perl",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/perl/perl-original.svg"
+  },
+  {
+    "name": "phalcon",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/phalcon/phalcon-original.svg"
+  },
+  {
+    "name": "phoenix",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/phoenix/phoenix-original.svg"
+  },
+  {
+    "name": "photoshop",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-line.svg"
+  },
+  {
+    "name": "php",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg"
+  },
+  {
+    "name": "phpstorm",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/phpstorm/phpstorm-original.svg"
+  },
+  {
+    "name": "podman",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/podman/podman-plain.svg"
+  },
+  {
+    "name": "polygon",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/polygon/polygon-original.svg"
+  },
+  {
+    "name": "postgresql",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg"
+  },
+  {
+    "name": "premierepro",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/premierepro/premierepro-original.svg"
+  },
+  {
+    "name": "processing",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/processing/processing-plain-wordmark.svg"
+  },
+  {
+    "name": "prometheus",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original-wordmark.svg"
+  },
+  {
+    "name": "protractor",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/protractor/protractor-plain-wordmark.svg"
+  },
+  {
+    "name": "putty",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg"
+  },
+  {
+    "name": "pycharm",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-plain.svg"
+  },
+  {
+    "name": "pytest",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytest/pytest-original-wordmark.svg"
+  },
+  {
+    "name": "python",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg"
+  },
+  {
+    "name": "pytorch",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original-wordmark.svg"
+  },
+  {
+    "name": "qt",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/qt/qt-original.svg"
+  },
+  {
+    "name": "r",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-plain.svg"
+  },
+  {
+    "name": "rails",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg"
+  },
+  {
+    "name": "raspberrypi",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original-wordmark.svg"
+  },
+  {
+    "name": "react",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+  },
+  {
+    "name": "rect",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rect/rect-plain.svg"
+  },
+  {
+    "name": "redhat",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redhat/redhat-original.svg"
+  },
+  {
+    "name": "redis",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"
+  },
+  {
+    "name": "redux",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg"
+  },
+  {
+    "name": "rocksdb",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rocksdb/rocksdb-plain.svg"
+  },
+  {
+    "name": "rspec",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rspec/rspec-original.svg"
+  },
+  {
+    "name": "rstudio",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rstudio/rstudio-original.svg"
+  },
+  {
+    "name": "ruby",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain-wordmark.svg"
+  },
+  {
+    "name": "rubymine",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rubymine/rubymine-original-wordmark.svg"
+  },
+  {
+    "name": "rust",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg"
+  },
+  {
+    "name": "safari",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/safari/safari-line-wordmark.svg"
+  },
+  {
+    "name": "salesforce",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg"
+  },
+  {
+    "name": "sass",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg"
+  },
+  {
+    "name": "scala",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-plain.svg"
+  },
+  {
+    "name": "sdl",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sdl/sdl-original.svg"
+  },
+  {
+    "name": "selenium",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg"
+  },
+  {
+    "name": "sequelize",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-plain.svg"
+  },
+  {
+    "name": "shopware",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/shopware/shopware-original.svg"
+  },
+  {
+    "name": "shotgrid",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/shotgrid/shotgrid-original.svg"
+  },
+  {
+    "name": "sketch",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sketch/sketch-line.svg"
+  },
+  {
+    "name": "slack",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original-wordmark.svg"
+  },
+  {
+    "name": "socketio",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg"
+  },
+  {
+    "name": "solidity",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg"
+  },
+  {
+    "name": "sourcetree",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sourcetree/sourcetree-original.svg"
+  },
+  {
+    "name": "spring",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-plain.svg"
+  },
+  {
+    "name": "spss",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spss/spss-plain.svg"
+  },
+  {
+    "name": "sqlalchemy",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlalchemy/sqlalchemy-plain.svg"
+  },
+  {
+    "name": "sqlite",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg"
+  },
+  {
+    "name": "ssh",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ssh/ssh-original-wordmark.svg"
+  },
+  {
+    "name": "storybook",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/storybook/storybook-plain-wordmark.svg"
+  },
+  {
+    "name": "stylus",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/stylus/stylus-original.svg"
+  },
+  {
+    "name": "subversion",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/subversion/subversion-original-wordmark.svg"
+  },
+  {
+    "name": "svelte",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-plain.svg"
+  },
+  {
+    "name": "swift",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg"
+  },
+  {
+    "name": "symfony",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original-wordmark.svg"
+  },
+  {
+    "name": "tailwindcss",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original-wordmark.svg"
+  },
+  {
+    "name": "tensorflow",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original-wordmark.svg"
+  },
+  {
+    "name": "terraform",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-plain-wordmark.svg"
+  },
+  {
+    "name": "thealgorithms",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/thealgorithms/thealgorithms-original.svg"
+  },
+  {
+    "name": "threejs",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original-wordmark.svg"
+  },
+  {
+    "name": "tomcat",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tomcat/tomcat-original-wordmark.svg"
+  },
+  {
+    "name": "tortoisegit",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tortoisegit/tortoisegit-original.svg"
+  },
+  {
+    "name": "towergit",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/towergit/towergit-plain.svg"
+  },
+  {
+    "name": "travis",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/travis/travis-plain.svg"
+  },
+  {
+    "name": "trello",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain.svg"
+  },
+  {
+    "name": "twitter",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg"
+  },
+  {
+    "name": "typescript",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg"
+  },
+  {
+    "name": "typo3",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typo3/typo3-original-wordmark.svg"
+  },
+  {
+    "name": "ubuntu",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg"
+  },
+  {
+    "name": "unity",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original-wordmark.svg"
+  },
+  {
+    "name": "unix",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unix/unix-original.svg"
+  },
+  {
+    "name": "unrealengine",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unrealengine/unrealengine-original.svg"
+  },
+  {
+    "name": "uwsgi",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/uwsgi/uwsgi-plain.svg"
+  },
+  {
+    "name": "vagrant",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vagrant/vagrant-original-wordmark.svg"
+  },
+  {
+    "name": "vim",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vim/vim-plain.svg"
+  },
+  {
+    "name": "visualstudio",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain-wordmark.svg"
+  },
+  {
+    "name": "vscode",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original-wordmark.svg"
+  },
+  {
+    "name": "vuejs",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original-wordmark.svg"
+  },
+  {
+    "name": "vuestorefront",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuestorefront/vuestorefront-plain.svg"
+  },
+  {
+    "name": "vuetify",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuetify/vuetify-line.svg"
+  },
+  {
+    "name": "webflow",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webflow/webflow-original.svg"
+  },
+  {
+    "name": "weblate",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/weblate/weblate-original-wordmark.svg"
+  },
+  {
+    "name": "webpack",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg"
+  },
+  {
+    "name": "webstorm",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webstorm/webstorm-original-wordmark.svg"
+  },
+  {
+    "name": "windows8",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg"
+  },
+  {
+    "name": "woocommerce",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/woocommerce/woocommerce-original.svg"
+  },
+  {
+    "name": "wordpress",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain-wordmark.svg"
+  },
+  {
+    "name": "xamarin",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xamarin/xamarin-original.svg"
+  },
+  {
+    "name": "xcode",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xcode/xcode-original.svg"
+  },
+  {
+    "name": "xd",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-plain.svg"
+  },
+  {
+    "name": "yarn",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original-wordmark.svg"
+  },
+  {
+    "name": "yii",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yii/yii-original-wordmark.svg"
+  },
+  {
+    "name": "yunohost",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yunohost/yunohost-original.svg"
+  },
+  {
+    "name": "zend",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/zend/zend-plain.svg"
+  },
+  {
+    "name": "zig",
+    "link": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/zig/zig-plain-wordmark.svg"
+  }
+]
