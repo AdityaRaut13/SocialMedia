@@ -16,7 +16,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(morgan("combined"));
 
+app.use("/images", express.static(process.env.FILE_STORAGE));
+
 app.use("/api/user", require("./backend/Routes/userRoutes"));
-app.use("/api/tech",require("./backend/Routes/techRoutes"));
+app.use("/api/tech", require("./backend/Routes/techRoutes"));
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}/`));

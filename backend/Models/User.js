@@ -2,7 +2,6 @@
 
 const mongoose = require("mongoose");
 
-const image = require("./Image");
 const project = require("./Project");
 const tech = require("./Technology");
 const { isEmail } = require("validator");
@@ -61,8 +60,8 @@ let user = mongoose.Schema({
   projects: {
     type: [project.schema],
   },
-  profilePic: {
-    type: image.schema,
+  profileLink: {
+    type: String,
   },
 });
 module.exports = mongoose.model("user", user);

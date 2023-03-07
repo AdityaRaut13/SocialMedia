@@ -5,7 +5,6 @@ const handleAsync = require("async-error-handler");
 const errorHandler = require("../middleware/error");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const Image = require("../Models/Image");
 
 /**
  * @DESC :  Get users which are similar to current user.
@@ -135,29 +134,12 @@ const deleteUser = handleAsync(async (req, res) => {
  * @REMAINING : magic number check must be performed.
  */
 const uploadPic = handleAsync(async (req, res) => {
-  // the content is in req.file.buffer and the meta data in req.file.mimetype
-  // validation must be done on the file.mimetype and the content.
-  // First the file must be created and then must be added to the user i.e. req.user obj
-  if (req.file.mimetype !== "image/jpeg" && req.file.mimetype !== "image/png") {
-    res.status(400);
-    throw new Error("Bad Request");
-  }
-  try {
-    let image = new Image({
-      filename: `avatar.${req.file.mimetype.substr(
-        req.file.mimetype.lastIndexOf("/") + 1
-      )}`,
-      file: req.file.buffer,
-    });
-    req.user.profilePic = image;
-    await req.user.save();
-    res.json({
-      status: "update successfully",
-    });
-  } catch (err) {
-    res.status(500);
-    throw err;
-  }
+  // generate a link for the same.
+  // save the reference in the req.user database and the return.
+  let link = `http://localhost:${process.env.PORT}/images/${req.file.filename}`;
+  req.user.profileLink = link;
+  await req.user.save();
+  res.status(200).json({ status: "Changed Successfully" });
 }, errorHandler);
 
 /**

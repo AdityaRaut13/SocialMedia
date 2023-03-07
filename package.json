@@ -6,12 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "server": "node index.js"
+    "server": "node index.js",
+    "startdb": "node startup.js"
   },
   "author": "Aditya Raut",
   "license": "MIT",
   "dependencies": {
+    "@dicebear/collection": "^5.3.4",
+    "@dicebear/core": "^5.3.4",
     "@faker-js/faker": "^7.6.0",
+    "@resvg/resvg-js": "^2.4.1",
     "async-error-handler": "^1.0.7",
     "bcrypt": "^5.1.0",
     "colors": "^1.4.0",
@@ -22,6 +26,7 @@
     "mongoose": "^6.9.1",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
+    "sharp": "^0.30.7",
     "validator": "^13.9.0"
   },
   "devDependencies": {

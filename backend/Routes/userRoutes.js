@@ -12,8 +12,8 @@ const {
   getUserProfile,
 } = require("../Controller/userController");
 const { auth } = require("../middleware/auth");
-const multer = require("multer");
-let upload = multer({ storage: multer.memoryStorage() });
+const errorHandler = require("../middleware/error");
+const upload = require("../middleware/uploadFile");
 
 router
   .route("/")
@@ -21,9 +21,9 @@ router
   .post(createUser)
   .put(auth, updateUser)
   .delete(auth, deleteUser);
-// need to remove the id in this column.
 router.post("/login", loginUser);
-router.route("/upload").post(auth, upload.single("avatar"), uploadPic);
+router.post("/upload", auth, upload.single("avatar"), uploadPic);
 router.get("/me", auth, getUserProfile);
+router.use(errorHandler);
 
 module.exports = router;
