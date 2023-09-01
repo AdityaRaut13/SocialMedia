@@ -1,0 +1,40 @@
+:root {
+  --columbia-blue: #a7c6daff;
+  --nyanza: #eefcceff;
+  --olivine: #9eb25dff;
+  --naples-yellow: #f1db4bff;
+  --mindaro: #edff71ff;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: white;
+}
+
+#login {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(249, 233, 233);
+  padding: 5%;
+  width: 15%;
+  height: 25%;
+  font-size: large;
+}
+#login input {
+  height: 25%;
+  border: none;
+  font-size: large;
+}
+#login button[type="submit"] {
+  height: 25%;
+  border: none;
+  background-color: white;
+}
+
+#root {
+  height: 100%;
+}
