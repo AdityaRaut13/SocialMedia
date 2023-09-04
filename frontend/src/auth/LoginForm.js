@@ -1,0 +1,71 @@
+import React, { useState } from "react";
+import axios from "axios";
+import "../App.css";
+import { useNavigate } from "react-router-dom";
+
+function LoginForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigation = useNavigate();
+  const onEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+  const onPasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+  const onSubmitCall = (event) => {
+    axios
+      .post("http://localhost:3000/api/user/login", {
+        email,
+        password,
+      })
+      .then((response) => {
+        const token = response.data.token;
+        if (!token) {
+          alert("Unable to login. Please try after some time.");
+          return;
+        }
+        localStorage.clear();
+        localStorage.setItem("token", token);
+        setTimeout(() => {
+          navigation("/");
+        }, 500);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Oops! Some error occured.");
+      });
+    event.preventDefault();
+  };
+  return (
+    <div className="App">
+      <form id="login" onSubmit={onSubmitCall}>
+        <label htmlFor="email" style={{ alignSelf: "baseline" }}>
+          Email
+        </label>
+        <input
+          autoComplete="true"
+          type="email"
+          id="email"
+          value={email}
+          onChange={onEmailChange}
+        />{" "}
+        <br />
+        <label htmlFor="password" style={{ alignSelf: "baseline" }}>
+          Password
+        </label>
+        <input
+          autoComplete="true"
+          type="password"
+          id="password"
+          onChange={onPasswordChange}
+          value={password}
+        />
+        <br />
+        <button type="submit">Sign in</button>
+      </form>
+    </div>
+  );
+}
+
+export default LoginForm;

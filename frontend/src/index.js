@@ -1,16 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import App from "./App";
+import Auth from "./auth/Auth";
+import LoginForm from "./auth/LoginForm";
+import Home from "./portal/home/Home";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {/* <BrowserRouter basename="/"> */}
-      {/* <Route path="/auth"></Route> */}
-    {/* </BrowserRouter> */}
-    <App />
+    <BrowserRouter basename="/">
+      <Routes>
+        <Route path="/auth" element={<Auth />}>
+          <Route path={"login"} element={<LoginForm />} />
+        </Route>
+        <Route path="/" element={<App />}>
+          <Route index element={<Home />} />
+          <Route path={"profile"} element={<Home />} />
+          <Route path={"messages"} element={<Home />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

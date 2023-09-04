@@ -3,6 +3,7 @@
 const express = require("express");
 require("dotenv").config({ path: ".env" });
 const morgan = require("morgan");
+const cors = require("cors");
 
 require("./backend/config/db")(); // initialise database
 //require("./backend/config/initial")(50); // make some random users.
@@ -14,6 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(cors());
 app.use(morgan("combined"));
 
 app.use("/images", express.static(process.env.FILE_STORAGE));
