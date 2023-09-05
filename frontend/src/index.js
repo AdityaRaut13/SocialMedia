@@ -6,6 +6,8 @@ import App from "./App";
 import Auth from "./auth/Auth";
 import LoginForm from "./auth/LoginForm";
 import Home from "./portal/home/Home";
+import Profile from "./portal/profile/Profile";
+import Messages from "./portal/messages/Messages";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,8 +19,8 @@ root.render(
         </Route>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
-          <Route path={"profile"} element={<Home />} />
-          <Route path={"messages"} element={<Home />} />
+          <Route path={"profile"} element={<Profile />} />
+          <Route path={"messages"} element={<Messages />} />
         </Route>
       </Routes>
     </BrowserRouter>

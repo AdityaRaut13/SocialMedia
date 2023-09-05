@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import SideBar from "./layout/sidebar";
+import "./App.css";
 function App() {
   const navigation = useNavigate();
   useEffect(() => {
@@ -9,8 +11,8 @@ function App() {
     }
   }, []);
   return (
-    <div>
-      App
+    <div id="App">
+      <SideBar/>
       <Outlet />
     </div>
   );

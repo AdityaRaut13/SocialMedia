@@ -3,8 +3,7 @@ import { Outlet } from "react-router-dom";
 
 function Auth(props) {
   return (
-    <div>
-      auth
+    <div className="Auth">
       <Outlet />
     </div>
   );

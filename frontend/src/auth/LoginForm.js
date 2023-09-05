@@ -38,33 +38,31 @@ function LoginForm() {
     event.preventDefault();
   };
   return (
-    <div className="App">
-      <form id="login" onSubmit={onSubmitCall}>
-        <label htmlFor="email" style={{ alignSelf: "baseline" }}>
-          Email
-        </label>
-        <input
-          autoComplete="true"
-          type="email"
-          id="email"
-          value={email}
-          onChange={onEmailChange}
-        />{" "}
-        <br />
-        <label htmlFor="password" style={{ alignSelf: "baseline" }}>
-          Password
-        </label>
-        <input
-          autoComplete="true"
-          type="password"
-          id="password"
-          onChange={onPasswordChange}
-          value={password}
-        />
-        <br />
-        <button type="submit">Sign in</button>
-      </form>
-    </div>
+    <form id="login" onSubmit={onSubmitCall}>
+      <label htmlFor="email" style={{ alignSelf: "baseline" }}>
+        Email
+      </label>
+      <input
+        autoComplete="true"
+        type="email"
+        id="email"
+        value={email}
+        onChange={onEmailChange}
+      />{" "}
+      <br />
+      <label htmlFor="password" style={{ alignSelf: "baseline" }}>
+        Password
+      </label>
+      <input
+        autoComplete="true"
+        type="password"
+        id="password"
+        onChange={onPasswordChange}
+        value={password}
+      />
+      <br />
+      <button type="submit">Sign in</button>
+    </form>
   );
 }
 
