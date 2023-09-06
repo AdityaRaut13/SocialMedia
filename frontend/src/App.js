@@ -9,11 +9,13 @@ function App() {
     if (!token || token === "undefined") {
       navigation("/auth/login");
     }
-  }, []);
+  }, [navigation]);
   return (
     <div id="App">
-      <SideBar/>
-      <Outlet />
+      <SideBar />
+      <div className="container">
+        <Outlet />
+      </div>
     </div>
   );
 }
