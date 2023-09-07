@@ -1,0 +1,39 @@
+Every Person will have following fields  : 
+	0 .id   ---- private
+	1 .name --public
+	2 .photo --public
+	3 .workedTech --public
+	4 .interestedTech --public
+	5 .projects --public
+	6 .mail ---- private or public
+	8 .number ---- private or public
+	9 .Age    ---- private or public
+	10.Gender --- private or public
+
+	0. id 
+		Will be random int
+	1. name 
+		name will be a basic string
+	2. photo 
+		basic images ( jpeg,jpg,png)
+	3. workedTech
+		list of entity :
+			1.years of experience
+			2.Tech 
+		similarity will be done on this field
+	4. interestedTech
+		list of entity :
+			1.years of experience
+			2.Tech 
+		similarity will be done on this field
+	5. projects 
+		1. title
+		2. project photos : list of photons if there
+		3. links
+	[6-10] -> are pretty self-evident
+Person can be able to message anyone in the network
+Message structure:	
+	1. person id
+	2. person id
+	3. message
+
