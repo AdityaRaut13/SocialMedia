@@ -1,8 +1,12 @@
+/** @format */
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [otherUsers, setOtherUsers] = useState([]);
+  const navigation = useNavigate();
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/user", {
@@ -17,6 +21,11 @@ function Home() {
         alert(error.message);
       });
   }, []);
+  const goToProfile = (username) => {
+    setTimeout(() => {
+      navigation(`/${username}`);
+    });
+  };
   const renderIcons = (icons) => {
     return (
       <div className="icon">
@@ -28,7 +37,11 @@ function Home() {
   const renderCard = (user) => {
     const { bio, workedOn, interested } = user;
     return (
-      <div key={user.id} className="user-card">
+      <div
+        key={user.id}
+        className="user-card"
+        onClick={() => goToProfile(user.username)}
+      >
         <div className="user-section-1">
           <div className="profile-image">
             <img src={user.profileLink} alt="profileImage" />

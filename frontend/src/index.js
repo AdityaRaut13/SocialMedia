@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -6,6 +8,7 @@ import App from "./App";
 import Auth from "./auth/Auth";
 import LoginForm from "./auth/LoginForm";
 import Home from "./portal/home/Home";
+import UserProfile from "./portal/home/UserProfile";
 import Profile from "./portal/profile/Profile";
 import Messages from "./portal/messages/Messages";
 
@@ -19,6 +22,7 @@ root.render(
         </Route>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
+          <Route path="/:username" element={<UserProfile />} />
           <Route path={"profile"} element={<Profile />} />
           <Route path={"messages"} element={<Messages />} />
         </Route>

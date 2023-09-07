@@ -45,7 +45,7 @@ function generateFakeProjects() {
 }
 
 async function createRandomUser(techID) {
-  let username = faker.name.fullName();
+  let username = faker.name.firstName();
   let email = faker.helpers.unique(faker.internet.email, [username]);
   const salt = await bcrypt.genSalt(10);
   let password = await bcrypt.hash(faker.internet.password(), salt);
