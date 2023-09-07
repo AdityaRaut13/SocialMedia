@@ -54,7 +54,13 @@ function Home() {
       </div>
     );
   };
-  return <div id="Home">{otherUsers?.map((user) => renderCard(user))}</div>;
+  return (
+    <div id="Home">
+      <div className="grid-container">
+        {otherUsers?.map((user) => renderCard(user))}
+      </div>
+    </div>
+  );
 }
 
 export default Home;
