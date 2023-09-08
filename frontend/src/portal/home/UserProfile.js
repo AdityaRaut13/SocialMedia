@@ -18,10 +18,19 @@ function UserProfile() {
         alert("Something went wrong");
       });
   }, [username]);
+  const { email, bio, workedOn, interested, projects, profileLink } = user;
   return (
-    <div>
-      UserProfile: <br />
-      {JSON.stringify(user)}
+    <div className="userProfile">
+      <div className="upper-section">
+        <div className="image">
+          <img src={profileLink} alt={"ProfileImage"} />
+        </div>
+        <div className="profile-sec-1">
+          <h3>{email} </h3>
+          <h3>{username} </h3>
+          <h3>{bio} </h3>
+        </div>
+      </div>
     </div>
   );
 }
