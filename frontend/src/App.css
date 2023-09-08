@@ -11,7 +11,7 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 ::-webkit-scrollbar {
-  width: 0.5rem;
+  width: 0.25rem;
 }
 ::-webkit-scrollbar-thumb {
   background-color: #141414;
@@ -58,11 +58,10 @@ body {
   display: flex;
   position: fixed;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   width: 2.5rem;
-  background-color: #292929;
+  background-color: black;
   top: 0;
-  left: 0;
   transition: 0.3s ease;
 }
 #sidebar:hover {
@@ -102,6 +101,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
   gap: 1rem;
+  padding: 1rem;
 }
 
 .user-card {
@@ -111,7 +111,13 @@ body {
   background-color: #dab5a1;
   border-radius: 10px;
   padding: 10px;
+  transition: transform 0.3s ease-in-out;
   gap: 0.5rem;
+}
+.user-card:hover {
+  box-shadow: 0.5rem 0.5rem 1rem black;
+  transform: scale(1.25);
+  /* height: max-content; */
 }
 
 .user-section-1,
@@ -179,4 +185,52 @@ body {
   justify-content: center;
   background-color: white;
   color: black;
+}
+
+@media (max-width: 325px) {
+  :root {
+    --icon-size: 20px;
+    --profile-size: 80px;
+    --card-width: 200px;
+  }
+  .container {
+    margin: 0;
+    padding-bottom: 2rem;
+  }
+  .grid-container {
+    padding: 0.5rem;
+  }
+  .user-card {
+    flex-direction: column;
+    width: var(--card-width);
+    align-items: center;
+  }
+  .user-section-1,
+  .user-section-2 {
+    width: 80%;
+  }
+  .user-card:hover {
+    box-shadow: 0.5rem 0.5rem 1rem black;
+    transform: none;
+  }
+  #sidebar {
+    flex-direction: row;
+    height: 2.5rem;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    top: initial;
+    bottom: 0;
+  }
+  .sidebar-item {
+    width: initial;
+    height: 100%;
+    padding: 0;
+  }
+  #sidebar:hover {
+    width: 100%;
+  }
+  #sidebar:hover h4 {
+    display: none;
+  }
 }

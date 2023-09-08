@@ -21,7 +21,7 @@ let user = mongoose.Schema({
     trim: true,
     unique: true,
     validate: {
-      validator: (v) => /[A-Za-z_ 0-9]+/.test(v),
+      validator: (v) => /[A-Za-z_0-9]+/.test(v),
       message: "Invalid Username",
     },
   },

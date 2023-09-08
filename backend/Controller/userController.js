@@ -153,6 +153,24 @@ const getUserProfile = handleAsync(async (req, res) => {
   res.json(await req.user.populate("workedOn interested"));
 }, errorHandler);
 
+/**
+ * @DESC : Returns the other user profile
+ * @METHOD : GET
+ * @PATH : /api/user/:username
+ * @PRIVATE : False
+ */
+const getOtherUser = handleAsync(async (req, res) => {
+  const { username } = req.params;
+  const current = await Users.findOne({ username })
+    .populate("workedOn interested")
+    .select("-password");
+  if (!current) {
+    res.status(400);
+    throw new Error("Wrong Username");
+  }
+  res.status(200).json(current);
+}, errorHandler);
+
 module.exports = {
   getUser,
   createUser,
@@ -161,6 +179,7 @@ module.exports = {
   loginUser,
   uploadPic,
   getUserProfile,
+  getOtherUser,
 };
 
 let generateToken = (id) => {
