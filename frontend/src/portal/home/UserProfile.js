@@ -19,6 +19,21 @@ function UserProfile() {
       });
   }, [username]);
   const { email, bio, workedOn, interested, projects, profileLink } = user;
+  const renderIcons = (icon) => {
+    return (
+      <div className="profile-icon"> 
+        <img src={icon.link} alt={"icon"} />
+      </div>
+    );
+  };
+  const renderProject = (project) => {
+    return (
+      <div className="project">
+        <h1>{project.title}</h1>
+        <h2>{project.description}</h2>
+      </div>
+    );
+  };
   return (
     <div className="userProfile">
       <div className="upper-section">
@@ -26,9 +41,20 @@ function UserProfile() {
           <img src={profileLink} alt={"ProfileImage"} />
         </div>
         <div className="profile-sec-1">
-          <h3>{email} </h3>
-          <h3>{username} </h3>
-          <h3>{bio} </h3>
+          <div>{email} </div>
+          <div>{username} </div>
+          <div>{bio} </div>
+        </div>
+      </div>
+      <div className="lower-section">
+        <div className="tech">
+          {workedOn && workedOn.map((icon) => renderIcons(icon))}
+        </div>
+        <div className="tech">
+          {interested && interested?.map((icon) => renderIcons(icon))}
+        </div>
+        <div className="projects">
+          {projects && projects?.map((project) => renderProject(project))}
         </div>
       </div>
     </div>

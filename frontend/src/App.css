@@ -1,3 +1,5 @@
+/** @format */
+
 :root {
   @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700);
   --icon-size: 30px;
@@ -157,6 +159,16 @@ body {
   height: var(--icon-size);
   object-fit: contain;
 }
+.profile-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0.5rem;
+}
+.profile-icon img {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+}
 
 .section-1-child,
 .section-2-child {
@@ -197,10 +209,12 @@ body {
   padding: 1.5rem;
   color: black;
   gap: 2rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
 
 .image {
-  height: 300px;
+  height: 150px;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -209,21 +223,36 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 .profile-sec-1 {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  gap: 0.25rem;
 }
-.profile-sec-1 h3 {
-  font-style: normal italic;
-  font-weight: lighter;
-  background-color: #8ca872;
+.profile-sec-1 * {
+  background-color: rgb(125, 207, 207);
   padding: 1rem;
-  width: auto;
+  font-style: italic;
   border-radius: 1rem;
-  display: inline;
+  font-weight: 500;
+}
+
+.lower-section {
+  background-color: #a75252;
+  padding: 1rem;
+}
+.lower-section * {
+  margin-bottom: 1rem;
+}
+
+.tech {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: wheat;
+  align-items: center;
+  padding: 0.5rem;
 }
 
 @media (max-width: 325px) {
