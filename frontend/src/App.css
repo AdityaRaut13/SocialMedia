@@ -199,22 +199,33 @@ body {
   color: black;
 }
 
-.userProfile {
-  background-color: pink;
+.profile-container {
+  background-color: #a75252;
 }
 
 .upper-section {
+  background-color: rgb(34, 32, 32);
   display: flex;
-  background-color: honeydew;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.profile-cont-1 {
+  display: flex;
+  background-color: rgb(34, 32, 32);
   padding: 1.5rem;
   color: black;
   gap: 2rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
+  justify-content: center;
+  border: 2px solid rgb(201, 191, 191);
+  border-radius: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
 }
-
 .image {
   height: 150px;
+  width: 150px;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -228,22 +239,63 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  gap: 0.25rem;
-}
-.profile-sec-1 * {
-  background-color: rgb(125, 207, 207);
+  background-color: #5e5b5b;
   padding: 1rem;
-  font-style: italic;
   border-radius: 1rem;
-  font-weight: 500;
+  width: min-content;
+}
+.display-label {
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #481f1f;
+}
+.display-text {
+  font-weight: 600;
+  font-style: normal;
+  color: bisque;
+  font-size: 0.8rem;
+}
+/* .profile-sec-1 * { */
+/* background-color: rgb(125, 207, 207); */
+/* padding: 0.5rem; */
+/* font-style: italic; */
+/* border-radius: 1rem; */
+/* font-weight: 500; */
+/* } */
+@media (max-width: 328px) {
+  .upper-section {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .image {
+    margin: auto;
+  }
 }
 
-.lower-section {
+.projects {
   background-color: #a75252;
   padding: 1rem;
-}
-.lower-section * {
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20%;
+  margin-right: 20%;
+  gap: 2rem;
+}
+.projects div:last-child {
+  margin-bottom: 1rem;
+}
+.project {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #a88080;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 5px 10px;
+  overflow: hidden;
+  color: black;
 }
 
 .tech {
@@ -253,8 +305,19 @@ body {
   background-color: wheat;
   align-items: center;
   padding: 0.5rem;
+  border-radius: 1rem;
+  height: min-content;
 }
 
+.tech-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/*  */
 @media (max-width: 325px) {
   :root {
     --icon-size: 20px;

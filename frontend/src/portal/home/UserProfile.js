@@ -21,7 +21,7 @@ function UserProfile() {
   const { email, bio, workedOn, interested, projects, profileLink } = user;
   const renderIcons = (icon) => {
     return (
-      <div className="profile-icon"> 
+      <div className="profile-icon">
         <img src={icon.link} alt={"icon"} />
       </div>
     );
@@ -30,32 +30,37 @@ function UserProfile() {
     return (
       <div className="project">
         <h1>{project.title}</h1>
-        <h2>{project.description}</h2>
+        <p>{project.description}</p>
       </div>
     );
   };
   return (
-    <div className="userProfile">
+    <div className="profile-container">
       <div className="upper-section">
-        <div className="image">
-          <img src={profileLink} alt={"ProfileImage"} />
-        </div>
-        <div className="profile-sec-1">
-          <div>{email} </div>
-          <div>{username} </div>
-          <div>{bio} </div>
+        <div className="profile-cont-1">
+          <div className="image">
+            <img src={profileLink} alt={"ProfileImage"} />
+          </div>
+          <div className="profile-sec-1">
+            <text className="display-label">email</text>
+            <text className="display-text">{email}</text>
+            <text className="display-label">username</text>
+            <text className="display-text">{username}</text>
+            {bio && <text className="display-label">bio</text>}
+            <text className="display-text">{bio}</text>
+          </div>
+          <div className="tech-container">
+            <div className="tech">
+              {workedOn && workedOn.map((icon) => renderIcons(icon))}
+            </div>
+            <div className="tech">
+              {interested && interested?.map((icon) => renderIcons(icon))}
+            </div>
+          </div>
         </div>
       </div>
-      <div className="lower-section">
-        <div className="tech">
-          {workedOn && workedOn.map((icon) => renderIcons(icon))}
-        </div>
-        <div className="tech">
-          {interested && interested?.map((icon) => renderIcons(icon))}
-        </div>
-        <div className="projects">
-          {projects && projects?.map((project) => renderProject(project))}
-        </div>
+      <div className="projects">
+        {projects && projects?.map((project) => renderProject(project))}
       </div>
     </div>
   );
