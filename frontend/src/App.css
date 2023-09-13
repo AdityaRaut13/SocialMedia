@@ -6,6 +6,7 @@
   --profile-size: 75px;
   --card-width: 300px;
 }
+
 body {
   font-size: 16px;
   background-color: #5e5b5b;
@@ -28,6 +29,9 @@ body {
   align-items: center;
   height: 100vh;
 }
+/* 
+  This is the start of the login form screen css;
+*/
 
 #login {
   display: flex;
@@ -53,6 +57,9 @@ body {
   background-color: white;
 }
 
+/* 
+  This is for the sidebar of screen
+*/
 .container {
   margin-left: 2.5rem;
 }
@@ -93,6 +100,10 @@ body {
   display: block;
   font-weight: normal;
 }
+
+/*
+  This is the start of the home page screen css;
+*/
 
 #Home {
   background: linear-gradient(45deg, #a75757, #80632a);
@@ -315,6 +326,30 @@ body {
   gap: 0.5rem;
   flex-direction: column;
   justify-content: space-around;
+}
+
+/* This is the start of the Profile screen css
+*/
+
+#ProfileScreen {
+  background-color: #a75757;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+#ProfileScreen .image-div {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#ProfileScreen .image-div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /*  */

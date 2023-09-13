@@ -49,7 +49,7 @@ async function createRandomUser(techID) {
   let email = faker.helpers.unique(faker.internet.email, [username]);
   const salt = await bcrypt.genSalt(10);
   let password = await bcrypt.hash(faker.internet.password(), salt);
-  let bio = faker.lorem.paragraph();
+  let bio = faker.lorem.lines(2);
   let workedOn = faker.helpers.arrayElements(techID, 5);
   let interested = faker.helpers.arrayElements(techID, 5);
   let _id = mongoose.Types.ObjectId();

@@ -40,8 +40,7 @@ function Home() {
       <div
         key={user.id}
         className="user-card"
-        onClick={() => goToProfile(user.username)}
-      >
+        onClick={() => goToProfile(user.username)}>
         <div className="user-section-1">
           <div className="profile-image">
             <img src={user.profileLink} alt="profileImage" />
@@ -70,7 +69,7 @@ function Home() {
   return (
     <div id="Home">
       <div className="grid-container">
-        {otherUsers?.map((user) => renderCard(user))}
+        {otherUsers.length > 0 && otherUsers.map((user) => renderCard(user))}
       </div>
     </div>
   );
