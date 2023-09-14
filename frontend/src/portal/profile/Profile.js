@@ -97,7 +97,20 @@ function Profile() {
           />
         </div>
       </div>
-      <Tech value={workedOn} list={tech} setValue={setTechInUser} />
+      WorkedOn Technology :
+      <Tech
+        value={workedOn}
+        isWorkedOn={true}
+        list={tech}
+        setValue={setTechInUser}
+      />
+      Interested Technology :
+      <Tech
+        value={interested}
+        isWorkedOn={false}
+        list={tech}
+        setValue={setTechInUser}
+      />
     </div>
   );
 }
