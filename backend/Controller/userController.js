@@ -103,10 +103,11 @@ const loginUser = handleAsync(async (req, res) => {
  */
 const updateUser = handleAsync(async (req, res) => {
   try {
-    let { workedOn, interested, projects } = req.body;
+    let { bio, workedOn, interested, projects } = req.body;
     req.user.workedOn = workedOn;
     req.user.interested = interested;
     req.user.projects = projects;
+    req.user.bio = bio;
     await req.user.save();
     res.json({ status: "Successfully updated" });
   } catch (err) {

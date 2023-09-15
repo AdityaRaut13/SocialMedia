@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ImCancelCircle } from "react-icons/im";
-import "./Tech1.css";
+import "./Tech.css";
 
 function Tech(props) {
   const { value, setValue, list: techList, isWorkedOn } = props;
@@ -9,6 +9,7 @@ function Tech(props) {
   const renderBoxIcon = (tech) => {
     return (
       <div
+        key={`TechBoxIcons_${isWorkedOn}_${tech._id}`}
         onClick={() => {
           let newValue = [];
           value.forEach((selectedTech) => {
@@ -17,7 +18,7 @@ function Tech(props) {
           setValue(newValue, isWorkedOn);
         }}
         className="tech-icon">
-        <div className="icon">
+        <div className="tech-box-icon">
           <img src={tech.link} alt={"icon"} />
         </div>
         <ImCancelCircle style={{ color: "red" }} />
@@ -56,6 +57,7 @@ function Tech(props) {
                   if (text !== "" && tech.name.indexOf(text) === -1) return "";
                   return (
                     <div
+                      key={`TechOptions_${isWorkedOn}_${tech._id}`}
                       onClick={() => {
                         let isPresent = false;
                         value.forEach((selectedTech) => {

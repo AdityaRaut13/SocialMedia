@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Tech from "./Tech";
+import { ImCancelCircle } from "react-icons/im";
+import "./Profile.css";
 
 function Profile() {
   const [user, setUser] = useState({});
@@ -64,6 +66,45 @@ function Profile() {
         alert("Something went wrong");
       });
   };
+  const renderProject = (project, index) => {
+    return (
+      <div key={index} className="profile-project">
+        <div className="proj-indiv-sec">
+          <text>Title</text>
+          <br />
+          <input
+            type="text"
+            value={project.title}
+            onChange={(e) => {
+              projects[index].title = e.target.value;
+              setUser({ ...user, projects });
+            }}
+          />
+        </div>
+        <div className="proj-indiv-sec">
+          <text>Description</text>
+          <br />
+          <textarea
+            value={project.description}
+            cols={45}
+            rows={3}
+            onChange={(e) => {
+              projects[index].description = e.target.value;
+              setUser({ ...user, projects });
+            }}
+          />
+        </div>
+        <div
+          onClick={() => {
+            projects.splice(index, 1);
+            setUser({ ...user, projects });
+          }}
+          className="project-close">
+          <ImCancelCircle style={{ width: "25px", height: "25px" }} />
+        </div>
+      </div>
+    );
+  };
   return (
     <div id="ProfileScreen">
       <div className="image-div" onClick={imageOnClick}>
@@ -87,30 +128,75 @@ function Profile() {
           <text>{username}</text>
         </div>
         <div className="indiv-sec">
-          <text>bio</text>
+          <text>bio&nbsp;</text>
+          {bio && <text>{bio.length}/140</text>}
           <br />
           <textarea
-            style={{ padding: "0.5rem", borderRadius: "1rem" }}
             value={bio}
+            onChange={(e) => {
+              if (e.target.value.length > 140) return;
+              setUser({ ...user, bio: e.target.value });
+            }}
             rows={4}
-            cols={50}
+            cols={45}
           />
         </div>
       </div>
-      WorkedOn Technology :
-      <Tech
-        value={workedOn}
-        isWorkedOn={true}
-        list={tech}
-        setValue={setTechInUser}
-      />
-      Interested Technology :
-      <Tech
-        value={interested}
-        isWorkedOn={false}
-        list={tech}
-        setValue={setTechInUser}
-      />
+      <div className="tech-section">
+        <text>WorkedOn Technology </text>
+        <Tech
+          value={workedOn}
+          isWorkedOn={true}
+          list={tech}
+          setValue={setTechInUser}
+        />
+      </div>
+      <div className="tech-section">
+        <text>Interested Technology </text>
+        <Tech
+          value={interested}
+          isWorkedOn={false}
+          list={tech}
+          setValue={setTechInUser}
+        />
+      </div>
+      {projects && (
+        <div className="ps-projects">
+          <text>Projects</text>
+          {projects.map((project, index) => renderProject(project, index))}
+          <button
+            onClick={() => {
+              setUser({
+                ...user,
+                projects: [...projects, { title: "", description: "" }],
+              });
+            }}>
+            Add Projects
+          </button>
+        </div>
+      )}
+      <button
+        id="updateProfileButton"
+        onClick={() => {
+          axios
+            .put(`http://localhost:3000/api/user/`, user, {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            })
+            .then((response) => {
+              if (response.statusText === "OK")
+                setTimeout(() => {
+                  navigation("/");
+                }, 500);
+            })
+            .catch((error) => {
+              alert("Failed to update the profile.");
+              console.error(error);
+            });
+        }}>
+        Update Profile
+      </button>
     </div>
   );
 }
