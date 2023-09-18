@@ -21,6 +21,6 @@ let message = mongoose.Schema(
   },
   { timestamps: true }
 );
-message.index({ createdAt: 1 });
-message.index({ updatedAt: 1 });
+message.index({ createdAt: -1 });
+message.index({ updatedAt: -1 });
 module.exports = mongoose.model("message", message);
