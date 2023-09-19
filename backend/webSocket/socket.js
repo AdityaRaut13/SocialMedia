@@ -28,19 +28,78 @@ const WebSocketServer = (app) => {
           },
         },
         {
+          $project: {
+            sender: "$_id.sender",
+            reciever: "$_id.reciever",
+            _id: 0,
+            msg: "$recentMessage",
+            t: { $toDate: "$createdAt" },
+          },
+        },
+        {
           $lookup: {
             from: "users",
-            localField: "_id.sender",
+            localField: "sender",
             foreignField: "_id",
+            pipeline: [
+              {
+                $project: {
+                  password: 0,
+                  bio: 0,
+                  projects: 0,
+                  interested: 0,
+                  workedOn: 0,
+                  __v: 0,
+                },
+              },
+            ],
             as: "sender",
           },
         },
         {
           $lookup: {
             from: "users",
-            localField: "_id.reciever",
+            localField: "reciever",
             foreignField: "_id",
+            pipeline: [
+              {
+                $project: {
+                  password: 0,
+                  bio: 0,
+                  projects: 0,
+                  interested: 0,
+                  workedOn: 0,
+                  __v: 0,
+                },
+              },
+            ],
             as: "reciever",
+          },
+        },
+        {
+          $unwind: "$sender",
+        },
+        {
+          $unwind: "$reciever",
+        },
+        {
+          $project: {
+            sender: {
+              $cond: {
+                if: { $eq: ["$sender._id", socket.user._id] },
+                then: "$$REMOVE",
+                else: "$sender",
+              },
+            },
+            reciever: {
+              $cond: {
+                if: { $eq: ["$reciever._id", socket.user._id] },
+                then: "$$REMOVE",
+                else: "$reciever",
+              },
+            },
+            msg: 1,
+            t: 1,
           },
         },
       ]);
