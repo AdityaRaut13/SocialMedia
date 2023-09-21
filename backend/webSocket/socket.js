@@ -2,6 +2,7 @@ const { createServer } = require("http");
 const { Server } = require("socket.io");
 const Messages = require("../Models/Message");
 const authWebSocket = require("./middleware");
+const User = require("../Models/User");
 
 const CurrentUserMap = new Map();
 
@@ -24,16 +25,17 @@ const WebSocketServer = (app) => {
           $group: {
             _id: { sender: "$sender", reciever: "$reciever" },
             recentMessage: { $first: "$message" },
-            createdAt: { $first: "$createdAt" },
+            t: { $first: "$createdAt" },
           },
         },
+        { $sort: { t: -1 } },
         {
           $project: {
             sender: "$_id.sender",
             reciever: "$_id.reciever",
             _id: 0,
             msg: "$recentMessage",
-            t: { $toDate: "$createdAt" },
+            t: { $toDate: "$t" },
           },
         },
         {
@@ -103,10 +105,65 @@ const WebSocketServer = (app) => {
           },
         },
       ]);
-      socket.send(messageSend);
+      const msgMap = new Map();
+      const result = [];
+      for (let msg of messageSend) {
+        if (msg.sender === undefined && msg.reciever === undefined) {
+          result.push(msg);
+          continue;
+        }
+        const person = msg.sender ?? msg.reciever;
+        const mapMsg = msgMap.get(person._id.toString());
+        if (mapMsg) {
+          const msgPushed = mapMsg.t >= msg.t ? mapMsg : msg;
+          result.push(msgPushed);
+          continue;
+        }
+        msgMap.set(person._id.toString(), msg);
+      }
+      socket.emit("allMessages", result);
     };
     sendMessages();
-    CurrentUserMap[socket.user.id] = socket;
+    socket.on("specificUserMsg", async (username, cb) => {
+      if (!username) {
+        return;
+      }
+      const otherUser = await User.findOne({ username });
+      const messageSend = await Messages.aggregate([
+        {
+          $sort: { createdAt: -1 },
+        },
+        {
+          $match: {
+            $or: [
+              {
+                $and: [
+                  { sender: otherUser._id },
+                  { reciever: socket.user._id },
+                ],
+              },
+              {
+                $and: [
+                  { sender: socket.user._id },
+                  { reciever: otherUser._id },
+                ],
+              },
+            ],
+          },
+        },
+        {
+          $project: {
+            sender: "$sender",
+            reciever: "$reciever",
+            t: "$createdAt",
+            msg: "$message",
+            _id: 0,
+          },
+        },
+      ]);
+      cb(messageSend);
+    });
+    CurrentUserMap[socket.user._id.toString()] = socket;
     socket.on("message", (message, number) => {
       // i need the sender's id with reciever's id with the msg itself
       // i need to map it to the socket._id for the reciever if it exists.
