@@ -13,122 +13,13 @@ const WebSocketServer = (app) => {
   });
   io.use(authWebSocket);
   io.on("connection", (socket) => {
-    const sendMessages = async () => {
-      const messageSend = await Messages.aggregate([
-        {
-          $match: {
-            $or: [{ sender: socket.user._id }, { reciever: socket.user._id }],
-          },
-        },
-        { $sort: { createdAt: -1 } },
-        {
-          $group: {
-            _id: { sender: "$sender", reciever: "$reciever" },
-            recentMessage: { $first: "$message" },
-            t: { $first: "$createdAt" },
-          },
-        },
-        { $sort: { t: -1 } },
-        {
-          $project: {
-            sender: "$_id.sender",
-            reciever: "$_id.reciever",
-            _id: 0,
-            msg: "$recentMessage",
-            t: { $toDate: "$t" },
-          },
-        },
-        {
-          $lookup: {
-            from: "users",
-            localField: "sender",
-            foreignField: "_id",
-            pipeline: [
-              {
-                $project: {
-                  password: 0,
-                  bio: 0,
-                  projects: 0,
-                  interested: 0,
-                  workedOn: 0,
-                  __v: 0,
-                },
-              },
-            ],
-            as: "sender",
-          },
-        },
-        {
-          $lookup: {
-            from: "users",
-            localField: "reciever",
-            foreignField: "_id",
-            pipeline: [
-              {
-                $project: {
-                  password: 0,
-                  bio: 0,
-                  projects: 0,
-                  interested: 0,
-                  workedOn: 0,
-                  __v: 0,
-                },
-              },
-            ],
-            as: "reciever",
-          },
-        },
-        {
-          $unwind: "$sender",
-        },
-        {
-          $unwind: "$reciever",
-        },
-        {
-          $project: {
-            sender: {
-              $cond: {
-                if: { $eq: ["$sender._id", socket.user._id] },
-                then: "$$REMOVE",
-                else: "$sender",
-              },
-            },
-            reciever: {
-              $cond: {
-                if: { $eq: ["$reciever._id", socket.user._id] },
-                then: "$$REMOVE",
-                else: "$reciever",
-              },
-            },
-            msg: 1,
-            t: 1,
-          },
-        },
-      ]);
-      const msgMap = new Map();
-      const result = [];
-      for (let msg of messageSend) {
-        if (msg.sender === undefined && msg.reciever === undefined) {
-          result.push(msg);
-          continue;
-        }
-        const person = msg.sender ?? msg.reciever;
-        const mapMsg = msgMap.get(person._id.toString());
-        if (mapMsg) {
-          const msgPushed = mapMsg.t >= msg.t ? mapMsg : msg;
-          result.push(msgPushed);
-          continue;
-        }
-        msgMap.set(person._id.toString(), msg);
-      }
-      socket.emit("allMessages", result);
-    };
-    sendMessages();
-    socket.on("specificUserMsg", async (username, cb) => {
-      if (!username) {
+    socket.on("specificUserMsg", async (_id, cb) => {
+      if (!_id) {
         return;
       }
-      const otherUser = await User.findOne({ username });
+      const otherUser = await User.findOne({ _id }).select(
+        "-password -email -bio -workedOn -interested"
+      );
       const messageSend = await Messages.aggregate([
         {
           $sort: { createdAt: -1 },
@@ -161,7 +52,8 @@ const WebSocketServer = (app) => {
           },
         },
       ]);
-      cb(messageSend);
+
+      cb({ messageSend, user: otherUser });
     });
     CurrentUserMap[socket.user._id.toString()] = socket;
     socket.on("message", (message, number) => {

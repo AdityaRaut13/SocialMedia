@@ -11,6 +11,7 @@ import Home from "./portal/home/Home";
 import UserProfile from "./portal/home/UserProfile";
 import Profile from "./portal/profile/Profile";
 import Messages from "./portal/messages/Messages";
+import MsgPanel from "./portal/messages/MsgPanel";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -24,7 +25,9 @@ root.render(
           <Route index element={<Home />} />
           <Route path="/:username" element={<UserProfile />} />
           <Route path={"profile"} element={<Profile />} />
-          <Route path={"messages"} element={<Messages />} />
+          <Route path={"messages"} element={<Messages />}>
+            <Route path={":username"} element={<MsgPanel />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
