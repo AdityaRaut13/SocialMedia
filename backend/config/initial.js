@@ -7,6 +7,7 @@ const tech = require("../Models/Technology");
 const users = require("../Models/User");
 const bcrypt = require("bcrypt");
 const fs = require("fs");
+const createMessages = require("./messages");
 
 let choices = [
   "abstract",
@@ -48,7 +49,8 @@ async function createRandomUser(techID) {
   let username = faker.name.firstName();
   let email = faker.helpers.unique(faker.internet.email, [username]);
   const salt = await bcrypt.genSalt(10);
-  let password = await bcrypt.hash(faker.internet.password(), salt);
+  const pass = faker.internet.password();
+  let password = await bcrypt.hash(pass, salt);
   let bio = faker.lorem.lines(2);
   let workedOn = faker.helpers.arrayElements(techID, 5);
   let interested = faker.helpers.arrayElements(techID, 5);
@@ -56,15 +58,20 @@ async function createRandomUser(techID) {
   let profileLink = generateFakerImageUrl();
   let projects = generateFakeProjects();
   return {
-    _id,
-    username,
-    email,
-    password,
-    bio,
-    workedOn,
-    interested,
-    projects,
-    profileLink,
+    user: {
+      _id,
+      username,
+      email,
+      password,
+      bio,
+      workedOn,
+      interested,
+      projects,
+      profileLink,
+    },
+    config: {
+      pass,
+    },
   };
 }
 
@@ -78,14 +85,22 @@ async function randomUser(number) {
     let t = await tech.find();
     console.log(t);
     let techID = t.map((value) => value._id);
-    for (let i = 0; i < number; i++) {
-      try {
-        await users.create(await createRandomUser(techID));
-      } catch (error) {
-        console.log(error.message);
+    try {
+      for (let i = 0; i < number; i++) {
+        const result = await createRandomUser(techID);
+        const content =
+          [result.user.email, result.config.pass, result.user.username].join(
+            ","
+          ) + "\n";
+        fs.appendFileSync("user.csv", content);
+        await users.create(result.user);
       }
+      await createMessages();
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      await mongoose.connection.close();
     }
-    await mongoose.connection.close();
   });
 }
 

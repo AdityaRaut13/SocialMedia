@@ -1,3 +1,5 @@
+/** @format */
+
 #msg-container {
   background-color: rgb(61, 154, 124);
   padding: 1rem;
@@ -7,7 +9,7 @@
 
 #msg-panel {
   background-color: rgb(154, 139, 168);
-  width: 20%;
+  width: 30%;
   height: 96vh;
   overflow-y: scroll;
   border-radius: 1rem;

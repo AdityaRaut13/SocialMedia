@@ -1,3 +1,5 @@
+/** @format */
+
 const Messages = require("../Models/Message");
 const User = require("../Models/User");
 const handleAsync = require("async-error-handler");
@@ -14,13 +16,13 @@ const getRecentMessages = handleAsync(async (req, res) => {
   const messageSend = await Messages.aggregate([
     {
       $match: {
-        $or: [{ sender: req.user._id }, { reciever: req.user._id }],
+        $or: [{ sender: req.user._id }, { receiver: req.user._id }],
       },
     },
     { $sort: { createdAt: -1 } },
     {
       $group: {
-        _id: { sender: "$sender", reciever: "$reciever" },
+        _id: { sender: "$sender", receiver: "$receiver" },
         recentMessage: { $first: "$message" },
         t: { $first: "$createdAt" },
       },
@@ -29,7 +31,7 @@ const getRecentMessages = handleAsync(async (req, res) => {
     {
       $project: {
         sender: "$_id.sender",
-        reciever: "$_id.reciever",
+        receiver: "$_id.receiver",
         _id: 0,
         msg: "$recentMessage",
         t: { $toDate: "$t" },
@@ -58,7 +60,7 @@ const getRecentMessages = handleAsync(async (req, res) => {
     {
       $lookup: {
         from: "users",
-        localField: "reciever",
+        localField: "receiver",
         foreignField: "_id",
         pipeline: [
           {
@@ -72,14 +74,14 @@ const getRecentMessages = handleAsync(async (req, res) => {
             },
           },
         ],
-        as: "reciever",
+        as: "receiver",
       },
     },
     {
       $unwind: "$sender",
     },
     {
-      $unwind: "$reciever",
+      $unwind: "$receiver",
     },
     {
       $project: {
@@ -90,11 +92,11 @@ const getRecentMessages = handleAsync(async (req, res) => {
             else: "$sender",
           },
         },
-        reciever: {
+        receiver: {
           $cond: {
-            if: { $eq: ["$reciever._id", req.user._id] },
+            if: { $eq: ["$receiver._id", req.user._id] },
             then: "$$REMOVE",
-            else: "$reciever",
+            else: "$receiver",
           },
         },
         msg: 1,
@@ -105,11 +107,11 @@ const getRecentMessages = handleAsync(async (req, res) => {
   const msgMap = new Map();
   const result = [];
   for (let msg of messageSend) {
-    if (msg.sender === undefined && msg.reciever === undefined) {
+    if (msg.sender === undefined && msg.receiver === undefined) {
       result.push(msg);
       continue;
     }
-    const person = msg.sender ?? msg.reciever;
+    const person = msg.sender ?? msg.receiver;
     const mapMsg = msgMap.get(person._id.toString());
     if (mapMsg) {
       const msgPushed = mapMsg.t >= msg.t ? mapMsg : msg;
@@ -145,10 +147,10 @@ const getUserMessage = handleAsync(async (req, res) => {
       $match: {
         $or: [
           {
-            $and: [{ sender: otherUser._id }, { reciever: req.user._id }],
+            $and: [{ sender: otherUser._id }, { receiver: req.user._id }],
           },
           {
-            $and: [{ sender: req.user._id }, { reciever: otherUser._id }],
+            $and: [{ sender: req.user._id }, { receiver: otherUser._id }],
           },
         ],
       },
@@ -156,7 +158,7 @@ const getUserMessage = handleAsync(async (req, res) => {
     {
       $project: {
         sender: "$sender",
-        reciever: "$reciever",
+        receiver: "$receiver",
         t: "$createdAt",
         msg: "$message",
         _id: 0,

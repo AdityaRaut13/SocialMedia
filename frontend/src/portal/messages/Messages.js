@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Outlet, useParams, Link } from "react-router-dom";
@@ -48,18 +50,20 @@ function Messages() {
     if (username) getUserMessage();
   }, [username]);
   const renderPanelMsg = (msg) => {
-    const user = msg.sender ?? msg.reciever ?? {};
+    const user = msg.sender ?? msg.receiver ?? {};
     return (
       <Link
         style={{ textDecoration: "none" }}
-        to={`/messages/${user.username}`}>
+        to={`/messages/${user.username}`}
+        key={`messages-users-${user._id}`}
+      >
         <div
           className="message"
           style={{
             backgroundColor:
               userMsgPanel?.user?._id === user._id ? "#4a3655" : "#6f5f78",
           }}
-          key={`messages-users-${user._id}`}>
+        >
           <div className="msg-img-container">
             <img src={user.profileLink} alt="profileImage" />
           </div>
@@ -77,8 +81,9 @@ function Messages() {
     return (
       <div
         key={`msg-${
-          msg.sender?._id?.toString() + msg.reciever?._id?.toString() ?? "me"
-        }-${msg.t}`}>
+          msg.sender?._id?.toString() + msg.receiver?._id?.toString() ?? "me"
+        }-${msg.t}`}
+      >
         {isSender && <h4 className="sent-text">[you]:{msg.msg}</h4>}
         {!isSender && (
           <h4 className="recieved-text">

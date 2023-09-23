@@ -8,7 +8,7 @@ let message = mongoose.Schema(
       required: true,
       ref: "user",
     },
-    reciever: {
+    receiver: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "user",
@@ -23,4 +23,6 @@ let message = mongoose.Schema(
 );
 message.index({ createdAt: -1 });
 message.index({ updatedAt: -1 });
+message.index({ sender: 1 });
+message.index({ receiver: 1 });
 module.exports = mongoose.model("message", message);
