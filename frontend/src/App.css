@@ -117,6 +117,15 @@ body {
   gap: 1rem;
   padding: 1rem;
 }
+.message-button {
+  background-color: rgba(255, 255, 0, 0.271);
+  color: black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  font-size: 0.6rem;
+  width: 90%;
+  align-items: center;
+}
 
 .user-card {
   display: flex;

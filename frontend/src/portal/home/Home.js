@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Home() {
   const [otherUsers, setOtherUsers] = useState([]);
@@ -37,18 +37,23 @@ function Home() {
   const renderCard = (user) => {
     const { bio, workedOn, interested } = user;
     return (
-      <div
-        key={user.id}
-        className="user-card"
-        onClick={() => goToProfile(user.username)}>
+      <div key={user.id} className="user-card">
         <div className="user-section-1">
           <div className="profile-image">
             <img src={user.profileLink} alt="profileImage" />
           </div>
           <div className="section-1-child">{user.username}</div>
           <div className="section-1-child">{user.email}</div>
+          <Link
+            style={{ textDecoration: "none" }}
+            className="message-button"
+            to={`/messages/${user.username}`}>
+            Message
+          </Link>
         </div>
-        <div className="user-section-2">
+        <div
+          className="user-section-2"
+          onClick={() => goToProfile(user.username)}>
           {workedOn && (
             <div className="section-2-child">
               {workedOn.map((icons) => renderIcons(icons))}

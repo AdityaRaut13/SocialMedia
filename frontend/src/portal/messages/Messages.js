@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Outlet, useParams, Link } from "react-router-dom";
 import "./Message.css";
@@ -9,6 +9,7 @@ function Messages() {
   const { username } = useParams();
   const [readMsgs, setReadMsgs] = useState([]);
   const [userMsgPanel, setUserMsgPanel] = useState({});
+  const usersMsgPanelRef = useRef(null);
   useEffect(() => {
     const getRecentMessages = async () => {
       try {
@@ -20,7 +21,7 @@ function Messages() {
             },
           }
         );
-        console.log(res.data);
+        console.log("recentMessages : ", res.data);
         setReadMsgs(res.data);
       } catch (error) {
         alert("something went wrong");
@@ -40,7 +41,13 @@ function Messages() {
             },
           }
         );
-        console.log(res.data);
+        console.log("userMessages : ", res.data);
+        if (res.data.messageSend.length === 0) {
+          setReadMsgs((prev) => [
+            ...prev,
+            { receiver: res.data.user, msg: "" },
+          ]);
+        }
         setUserMsgPanel(res.data);
       } catch (error) {
         alert("something went wrong");
@@ -55,15 +62,13 @@ function Messages() {
       <Link
         style={{ textDecoration: "none" }}
         to={`/messages/${user.username}`}
-        key={`messages-users-${user._id}`}
-      >
+        key={`messages-users-${user._id}`}>
         <div
           className="message"
           style={{
             backgroundColor:
               userMsgPanel?.user?._id === user._id ? "#4a3655" : "#6f5f78",
-          }}
-        >
+          }}>
           <div className="msg-img-container">
             <img src={user.profileLink} alt="profileImage" />
           </div>
@@ -75,37 +80,12 @@ function Messages() {
       </Link>
     );
   };
-  const renderTextMsg = (msg) => {
-    const isSender =
-      msg.sender === userMsgPanel?.me._id.toString() ? true : false;
-    return (
-      <div
-        key={`msg-${
-          msg.sender?._id?.toString() + msg.receiver?._id?.toString() ?? "me"
-        }-${msg.t}`}
-      >
-        {isSender && <h4 className="sent-text">[you]:{msg.msg}</h4>}
-        {!isSender && (
-          <h4 className="recieved-text">
-            [{userMsgPanel.user?.username}]:{msg.msg}
-          </h4>
-        )}
-      </div>
-    );
-  };
   return (
     <div id="msg-container">
-      {readMsgs.length > 0 && (
-        <div id="msg-panel">{readMsgs.map((msg) => renderPanelMsg(msg))}</div>
-      )}
-      {userMsgPanel.messageSend && (
-        <div className="msg-text">
-          <div className="msg-center">
-            {userMsgPanel.messageSend.map((msg) => renderTextMsg(msg))}
-          </div>
-        </div>
-      )}
-      <Outlet />
+      <div ref={usersMsgPanelRef} id="msg-panel">
+        {readMsgs.length > 0 && readMsgs.map((msg) => renderPanelMsg(msg))}
+      </div>
+      <Outlet context={userMsgPanel} />
     </div>
   );
 }

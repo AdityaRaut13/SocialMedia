@@ -9,10 +9,11 @@
 
 #msg-panel {
   background-color: rgb(154, 139, 168);
-  width: 30%;
+  width: 400px;
   height: 96vh;
   overflow-y: scroll;
   border-radius: 1rem;
+  flex-shrink: 0;
 }
 .message {
   display: flex;
@@ -49,21 +50,20 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.msg-text {
+.msg-text-container {
   width: 70%;
   background-color: rgb(56, 50, 62);
   padding: 1rem;
-  border-radius: 1rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
 .msg-center {
   border: 2px solid white;
-  width: 97%;
   height: 97%;
   padding: 1rem;
-  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  /* border-radius: 0.75rem; */
 }
 
 .sent-text {
@@ -71,4 +71,19 @@
 }
 .recieved-text {
   color: rgb(215, 142, 118);
+}
+.msg-text-profile {
+  background-color: rgb(32, 3, 64);
+  padding: 0.65rem;
+  padding-left: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.msg-text {
+  background-color: cadetblue;
+  width: 50%;
 }
