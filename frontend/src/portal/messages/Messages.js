@@ -65,10 +65,12 @@ function Messages() {
         key={`messages-users-${user._id}`}>
         <div
           className="message"
-          style={{
-            backgroundColor:
-              userMsgPanel?.user?._id === user._id ? "#4a3655" : "#6f5f78",
-          }}>
+          style={
+            {
+              // backgroundColor:
+              // userMsgPanel?.user?._id === user._id ? "#4a3655" : "#6f5f78",
+            }
+          }>
           <div className="msg-img-container">
             <img src={user.profileLink} alt="profileImage" />
           </div>
