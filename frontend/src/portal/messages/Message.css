@@ -1,7 +1,30 @@
 /** @format */
 
 #msg-container {
-  background-color: rgb(41, 192, 144);
+  background-color: rgba(40, 162, 123, 0.92);
+  background-color: rgb(87, 47, 47);
+  --s: 80px;
+  --c1: #5c524f;
+  --c2: #26313a;
+  --_g: var(--c2) 6% 14%, var(--c1) 16% 24%, var(--c2) 26% 34%,
+    var(--c1) 36% 44%, var(--c2) 46% 54%, var(--c1) 56% 64%, var(--c2) 66% 74%,
+    var(--c1) 76% 84%, var(--c2) 86% 94%;
+  background: radial-gradient(
+      100% 100% at 100% 0,
+      var(--c1) 4%,
+      var(--_g),
+      #0008 96%,
+      #0000
+    ),
+    radial-gradient(
+        100% 100% at 0 100%,
+        #0000,
+        #0008 4%,
+        var(--_g),
+        var(--c1) 96%
+      )
+      var(--c1);
+  background-size: var(--s) var(--s);
   padding: 1rem;
   display: flex;
   font-family: "Open Sans", sans-serif;
@@ -20,8 +43,8 @@
 .message {
   display: flex;
   align-items: center;
-  background-color: #4e95bc;
-  border-bottom: 1px solid rgb(9, 88, 114);
+  /* margin: 0.1rem; */
+  border-bottom: 0.1px solid rgb(74, 95, 103);
   padding: 0.5rem;
   gap: 0.75rem;
 }
@@ -62,14 +85,14 @@
 }
 .msg-center {
   max-width: 100%;
-  height: 90%;
-  max-height: 90%;
-  overflow-y: scroll;
+  height: 80%;
+  max-height: 80%;
+  overflow: scroll;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background-color: #1f2223;
+  background-color: #3b3c3c;
 
   /* background-color: #6a7b8d; */
   /* border-radius: 0.75rem; */
@@ -99,7 +122,7 @@
   background-color: #6db7df;
 }
 .text-box {
-  background-color: #616263;
+  background-color: #444546;
   height: 5%;
   max-width: 100%;
   max-height: 5%;

@@ -159,11 +159,12 @@ const getUserMessage = handleAsync(async (req, res) => {
       $project: {
         sender: "$sender",
         receiver: "$receiver",
-        t: "$createdAt",
+        t: { $toDate: "$createdAt" },
         msg: "$message",
         _id: 0,
       },
     },
+    { $sort: { t: 1 } },
   ]);
   res.status(200).send({ messageSend, user: otherUser, me: req.user });
 }, errorHandler);

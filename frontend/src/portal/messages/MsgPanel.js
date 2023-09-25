@@ -4,7 +4,7 @@ import { AiOutlineSend } from "react-icons/ai";
 import "./Message.css";
 
 function MsgPanel() {
-  const { me, messageSend, user } = useOutletContext();
+  const [{ me, messageSend, user }, webSocket] = useOutletContext();
   const [newMsg, setNewMsg] = useState("");
   const renderTextMsg = (msg) => {
     const isSender = msg.sender === me._id ? true : false;
@@ -23,6 +23,7 @@ function MsgPanel() {
           msg.sender?._id?.toString() + msg.receiver?._id?.toString() ?? "me"
         }-${msg.t}`}>
         <h4 className="sent-text">{msg.msg}</h4>
+        <i>{msg.t}</i>
       </div>
     );
   };

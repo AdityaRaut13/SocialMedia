@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Outlet, useParams, Link } from "react-router-dom";
+import { io } from "socket.io-client";
 import "./Message.css";
 
 function Messages() {
@@ -10,6 +11,17 @@ function Messages() {
   const [readMsgs, setReadMsgs] = useState([]);
   const [userMsgPanel, setUserMsgPanel] = useState({});
   const usersMsgPanelRef = useRef(null);
+  const webSocket = useRef(null);
+  useEffect(() => {
+    webSocket.current = io(`http://localhost:3000/`, {
+      auth: {
+        token: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    webSocket.current.on("connect", () => {
+      console.log(webSocket.current);
+    });
+  }, []);
   useEffect(() => {
     const getRecentMessages = async () => {
       try {
@@ -65,12 +77,10 @@ function Messages() {
         key={`messages-users-${user._id}`}>
         <div
           className="message"
-          style={
-            {
-              // backgroundColor:
-              // userMsgPanel?.user?._id === user._id ? "#4a3655" : "#6f5f78",
-            }
-          }>
+          style={{
+            backgroundColor:
+              userMsgPanel?.user?._id === user._id ? "#4e95bc" : "#447792",
+          }}>
           <div className="msg-img-container">
             <img src={user.profileLink} alt="profileImage" />
           </div>
@@ -87,7 +97,7 @@ function Messages() {
       <div ref={usersMsgPanelRef} id="msg-panel">
         {readMsgs.length > 0 && readMsgs.map((msg) => renderPanelMsg(msg))}
       </div>
-      <Outlet context={userMsgPanel} />
+      <Outlet context={[userMsgPanel, webSocket.current]} />
     </div>
   );
 }
