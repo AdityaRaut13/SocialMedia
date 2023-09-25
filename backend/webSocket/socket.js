@@ -4,7 +4,7 @@ const { createServer } = require("http");
 const { Server } = require("socket.io");
 const Messages = require("../Models/Message");
 const authWebSocket = require("./middleware");
-const User = require("../Models/User");
+const jwt = require("jsonwebtoken");
 
 const CurrentUserMap = new Map();
 
@@ -15,56 +15,109 @@ const WebSocketServer = (app) => {
   });
   io.use(authWebSocket);
   io.on("connection", (socket) => {
-    socket.on("specificUserMsg", async (_id, cb) => {
-      if (!_id) {
+    CurrentUserMap.set(socket.user._id.toString(), socket);
+    const auth = (authHeader) => {
+      let token = authHeader.split(" ")[1];
+      try {
+        jwt.verify(token, process.env.JWT_SECRET);
+        return true;
+      } catch (err) {
+        CurrentUserMap.delete(socket.user._id.toString());
+        return false;
+      }
+    };
+    socket.on("message", async (newMsg) => {
+      if (!auth(socket.handshake.auth.token)) {
+        socket.emit("error", { msg: "token expired" });
+        socket.disconnect(true);
         return;
       }
-      const otherUser = await User.findOne({ _id }).select(
-        "-password -email -bio -workedOn -interested"
-      );
-      const messageSend = await Messages.aggregate([
-        {
-          $sort: { createdAt: -1 },
-        },
-        {
-          $match: {
-            $or: [
-              {
-                $and: [
-                  { sender: otherUser._id },
-                  { receiver: socket.user._id },
-                ],
-              },
-              {
-                $and: [
-                  { sender: socket.user._id },
-                  { receiver: otherUser._id },
-                ],
-              },
-            ],
+      if (newMsg.me !== socket.user._id.toString()) {
+        socket.emit("error", { msg: "bad request" });
+        return;
+      }
+      try {
+        const saveMsg = new Messages({
+          sender: newMsg.me,
+          receiver: newMsg.user,
+          message: newMsg.msg,
+        });
+        await saveMsg.save();
+        let serverMsg = await Messages.aggregate([
+          { $match: { _id: saveMsg._id } },
+          { $limit: 1 },
+          {
+            $lookup: {
+              from: "users",
+              localField: "sender",
+              foreignField: "_id",
+              pipeline: [
+                {
+                  $project: {
+                    password: 0,
+                    bio: 0,
+                    projects: 0,
+                    interested: 0,
+                    workedOn: 0,
+                    __v: 0,
+                  },
+                },
+              ],
+              as: "sender",
+            },
           },
-        },
-        {
-          $project: {
-            sender: "$sender",
-            receiver: "$receiver",
-            t: "$createdAt",
-            msg: "$message",
-            _id: 0,
+          {
+            $lookup: {
+              from: "users",
+              localField: "receiver",
+              foreignField: "_id",
+              pipeline: [
+                {
+                  $project: {
+                    password: 0,
+                    bio: 0,
+                    projects: 0,
+                    interested: 0,
+                    workedOn: 0,
+                    __v: 0,
+                  },
+                },
+              ],
+              as: "receiver",
+            },
           },
-        },
-      ]);
+          {
+            $unwind: "$sender",
+          },
+          {
+            $unwind: "$receiver",
+          },
+          {
+            $project: {
+              sender: "$sender",
+              receiver: "$receiver",
+              t: "$createdAt",
+              msg: "$message",
+            },
+          },
+        ]);
+        console.log(serverMsg);
+        serverMsg = serverMsg[0];
 
-      cb({ messageSend, user: otherUser });
+        socket.emit("message", serverMsg);
+        const otherUserSocket = CurrentUserMap.get(newMsg.user);
+        if (!otherUserSocket) {
+          console.log("Other user not present!");
+          return;
+        }
+        otherUserSocket.emit("message", serverMsg);
+      } catch (err) {
+        console.log(err);
+        socket.emit("error", err);
+      }
     });
-    CurrentUserMap[socket.user._id.toString()] = socket;
-    socket.on("message", (message, number) => {
-      // i need the sender's id with receiver's id with the msg itself
-      // i need to map it to the socket._id for the receiver if it exists.
-      // i need to send that to the receiver and also update the messages table.
-      // i need to also check if the user's token is expired on it
-      console.log(message);
-      console.log(number);
+    socket.on("disconnect", () => {
+      CurrentUserMap.delete(socket.user._id.toString());
     });
   });
   return httpServer;

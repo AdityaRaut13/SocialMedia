@@ -1,17 +1,30 @@
 /** @format */
 
 const mongoose = require("mongoose");
+const User = require("./User");
+const userValidation = async (_id) => {
+  const user = await User.findById(_id);
+  return !!user;
+};
 let message = mongoose.Schema(
   {
     sender: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "user",
+      validate: {
+        validator: userValidation,
+        message: "Invalid User",
+      },
     },
     receiver: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "user",
+      validate: {
+        validator: userValidation,
+        message: "Invalid User",
+      },
     },
     message: {
       type: String,

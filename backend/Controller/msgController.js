@@ -27,14 +27,13 @@ const getRecentMessages = handleAsync(async (req, res) => {
         t: { $first: "$createdAt" },
       },
     },
-    { $sort: { t: -1 } },
     {
       $project: {
         sender: "$_id.sender",
         receiver: "$_id.receiver",
         _id: 0,
         msg: "$recentMessage",
-        t: { $toDate: "$t" },
+        t: 1,
       },
     },
     {
@@ -103,7 +102,9 @@ const getRecentMessages = handleAsync(async (req, res) => {
         t: 1,
       },
     },
+    { $sort: { t: -1 } },
   ]);
+  console.log(messageSend);
   const msgMap = new Map();
   const result = [];
   for (let msg of messageSend) {
@@ -120,6 +121,7 @@ const getRecentMessages = handleAsync(async (req, res) => {
     }
     msgMap.set(person._id.toString(), msg);
   }
+  result.sort((a, b) => b.t - a.t);
   res.send(result);
 }, errorHandler);
 

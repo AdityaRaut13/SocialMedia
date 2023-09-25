@@ -76,26 +76,22 @@
   text-overflow: ellipsis;
 }
 .msg-text-container {
-  width: 70%;
+  width: max-content;
+  width: 100%;
+  height: 93vh;
   background-color: rgb(255, 255, 255);
   border-radius: 1rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .msg-center {
-  max-width: 100%;
-  height: 80%;
-  max-height: 80%;
-  overflow: scroll;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   background-color: #3b3c3c;
-
-  /* background-color: #6a7b8d; */
-  /* border-radius: 0.75rem; */
 }
 
 .sent-text {
@@ -113,6 +109,7 @@
   gap: 1rem;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
+  height: 7%;
 }
 
 .msg-text {
@@ -123,7 +120,7 @@
 }
 .text-box {
   background-color: #444546;
-  height: 5%;
+  height: 7%;
   max-width: 100%;
   max-height: 5%;
   padding: 1rem;
@@ -133,13 +130,12 @@
   border-bottom-right-radius: 1rem;
 }
 .text-box textarea {
-  width: 100%;
-  max-width: 100%;
-  height: 100%;
   outline: none;
   border: none;
   border-radius: 0.25rem;
   resize: none;
+  width: 100%;
+  max-width: 100%;
 }
 .text-box button {
   background-color: white;
@@ -153,4 +149,10 @@
 .text-box button:hover {
   background-color: rgb(83, 188, 188);
   color: white;
+}
+.msg-container-dialog {
+  height: 86%;
+  max-height: 86%;
+  overflow-y: scroll;
+  background-color: #3b3c3c;
 }

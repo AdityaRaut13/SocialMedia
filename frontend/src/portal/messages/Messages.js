@@ -12,34 +12,52 @@ function Messages() {
   const [userMsgPanel, setUserMsgPanel] = useState({});
   const usersMsgPanelRef = useRef(null);
   const webSocket = useRef(null);
+  const getRecentMessages = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:3000/api/messages/recentMessages`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      console.log(res.data);
+      setReadMsgs(res.data);
+    } catch (error) {
+      alert("something went wrong");
+      console.log(error);
+    }
+  };
   useEffect(() => {
     webSocket.current = io(`http://localhost:3000/`, {
       auth: {
         token: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    webSocket.current.on("connect", () => {
-      console.log(webSocket.current);
+    webSocket.current.on("error", (err) => alert(err));
+    webSocket.current.on("message", (msg) => {
+      setUserMsgPanel((prev) => {
+        console.log(msg);
+        const { messageSend } = prev;
+        return {
+          ...prev,
+          messageSend: [
+            ...messageSend,
+            {
+              sender: msg.sender._id.toString(),
+              receiver: msg.receiver._id.toString(),
+              msg: msg.msg,
+              t: msg.t,
+            },
+          ],
+        };
+      });
+      getRecentMessages();
     });
   }, []);
+
   useEffect(() => {
-    const getRecentMessages = async () => {
-      try {
-        const res = await axios.get(
-          `http://localhost:3000/api/messages/recentMessages`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-        console.log("recentMessages : ", res.data);
-        setReadMsgs(res.data);
-      } catch (error) {
-        alert("something went wrong");
-        console.log(error);
-      }
-    };
     getRecentMessages();
   }, []);
   useEffect(() => {
@@ -53,7 +71,6 @@ function Messages() {
             },
           }
         );
-        console.log("userMessages : ", res.data);
         if (res.data.messageSend.length === 0) {
           setReadMsgs((prev) => [
             ...prev,

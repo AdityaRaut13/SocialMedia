@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useOutletContext } from "react-router-dom";
 import { AiOutlineSend } from "react-icons/ai";
 import "./Message.css";
@@ -6,6 +6,7 @@ import "./Message.css";
 function MsgPanel() {
   const [{ me, messageSend, user }, webSocket] = useOutletContext();
   const [newMsg, setNewMsg] = useState("");
+  const refPanel = useRef(null);
   const renderTextMsg = (msg) => {
     const isSender = msg.sender === me._id ? true : false;
     return (
@@ -28,12 +29,14 @@ function MsgPanel() {
     );
   };
   const sendMsg = () => {
-    console.log("inside sendMsg");
-    console.log(newMsg);
-    console.log(me);
-    console.log(user);
+    webSocket.emit("message", {
+      me: me._id.toString(),
+      user: user._id.toString(),
+      msg: newMsg,
+    });
+    setNewMsg("");
+    refPanel.current.scrollTop = refPanel.current.scrollHeight;
   };
-  console.log(messageSend);
   return (
     messageSend && (
       <div className="msg-text-container">
@@ -45,8 +48,10 @@ function MsgPanel() {
             <div>{user.username}</div>
           </div>
         </div>
-        <div className="msg-center">
-          {messageSend.map((msg) => renderTextMsg(msg))}
+        <div ref={refPanel} className="msg-container-dialog">
+          <div className="msg-center">
+            {messageSend.map((msg) => renderTextMsg(msg))}
+          </div>
         </div>
         <div className="text-box">
           <textarea
