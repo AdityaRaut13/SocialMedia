@@ -7,6 +7,10 @@ function MsgPanel() {
   const [{ me, messageSend, user }, webSocket] = useOutletContext();
   const [newMsg, setNewMsg] = useState("");
   const refPanel = useRef(null);
+  // eslint-disable-next-line no-unused-vars
+  const convertDate = (date) => {
+    return date.toISOString().split("T")[1].split(".")[0];
+  };
   const renderTextMsg = (msg) => {
     const isSender = msg.sender === me._id ? true : false;
     return (
@@ -22,9 +26,10 @@ function MsgPanel() {
         className="msg-text"
         key={`msg-${
           msg.sender?._id?.toString() + msg.receiver?._id?.toString() ?? "me"
-        }-${msg.t}`}>
-        <h4 className="sent-text">{msg.msg}</h4>
-        <i>{msg.t}</i>
+        }-${msg.t.toISOString()}`}>
+        <p className="sent-text">{msg.msg}</p>
+        {/* <i>{convertDate(msg.t)}</i> */}
+        <i>{msg.t.toString()}</i>
       </div>
     );
   };
@@ -60,7 +65,7 @@ function MsgPanel() {
             onChange={(e) => setNewMsg(e.target.value)}
           />
           <button onClick={sendMsg}>
-            <AiOutlineSend size={"30px"} />
+            <AiOutlineSend size={"auto"} />
           </button>
         </div>
       </div>

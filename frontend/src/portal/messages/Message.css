@@ -74,6 +74,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: cornsilk;
 }
 .msg-text-container {
   width: max-content;
@@ -113,9 +114,9 @@
 }
 
 .msg-text {
-  padding: 0.25rem;
+  padding: 0.1rem 0.2rem;
   width: fit-content;
-  max-width: 60%;
+  max-width: 55%;
   background-color: #6db7df;
 }
 .text-box {
@@ -138,13 +139,13 @@
   max-width: 100%;
 }
 .text-box button {
-  background-color: white;
+  background-color: #444546;
   outline: none;
   border: none;
-  border-radius: 50%;
   align-items: center;
   justify-content: center;
   display: flex;
+  color: white;
 }
 .text-box button:hover {
   background-color: rgb(83, 188, 188);

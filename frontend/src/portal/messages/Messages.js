@@ -5,6 +5,7 @@ import axios from "axios";
 import { Outlet, useParams, Link } from "react-router-dom";
 import { io } from "socket.io-client";
 import "./Message.css";
+import jwt_decode from "jwt-decode";
 
 function Messages() {
   const { username } = useParams();
@@ -22,11 +23,15 @@ function Messages() {
           },
         }
       );
-      console.log(res.data);
-      setReadMsgs(res.data);
+      setReadMsgs(() => {
+        const result = [];
+        for (let msg of res.data) {
+          result.push({ ...msg, t: new Date(msg.t) });
+        }
+        return result;
+      });
     } catch (error) {
-      alert("something went wrong");
-      console.log(error);
+      console.error(error);
     }
   };
   useEffect(() => {
@@ -38,8 +43,13 @@ function Messages() {
     webSocket.current.on("error", (err) => alert(err));
     webSocket.current.on("message", (msg) => {
       setUserMsgPanel((prev) => {
-        console.log(msg);
-        const { messageSend } = prev;
+        if (Object.keys(prev).length === 0) {
+          return prev;
+        }
+        const { user, messageSend } = prev;
+        if (msg.sender._id !== user._id && msg.receiver._id !== user._id) {
+          return prev;
+        }
         return {
           ...prev,
           messageSend: [
@@ -53,8 +63,32 @@ function Messages() {
           ],
         };
       });
-      getRecentMessages();
+      setReadMsgs((prev) => {
+        const userId = jwt_decode(localStorage.getItem("token")).id;
+        const otherUser = userId === msg.sender._id ? msg.receiver : msg.sender;
+        const result = [];
+        const insertMsg = {
+          [userId === msg.sender._id ? "receiver" : "sender"]: otherUser,
+          msg: msg.msg,
+          t: new Date(msg.t),
+        };
+        let isPresent = false;
+        prev.forEach((tempMsg) => {
+          const user = tempMsg.sender ?? tempMsg.receiver;
+          if (user._id === otherUser._id) {
+            result.push(insertMsg);
+            isPresent = true;
+            return;
+          }
+          result.push(tempMsg);
+        });
+        if (!isPresent) result.push(insertMsg);
+        return result.sort((a, b) => b.t - a.t);
+      });
     });
+    return () => {
+      webSocket.current.disconnect();
+    };
   }, []);
 
   useEffect(() => {
@@ -72,15 +106,19 @@ function Messages() {
           }
         );
         if (res.data.messageSend.length === 0) {
-          setReadMsgs((prev) => [
-            ...prev,
-            { receiver: res.data.user, msg: "" },
-          ]);
+          setReadMsgs(() => [{ receiver: res.data.user, msg: "" }]);
+          return;
         }
-        setUserMsgPanel(res.data);
+        setUserMsgPanel(() => {
+          const result = { ...res.data, messageSend: [] };
+          for (let msg of res.data.messageSend) {
+            result.messageSend.push({ ...msg, t: new Date(msg.t) });
+          }
+          console.log("result : ", result);
+          return result;
+        });
       } catch (error) {
-        alert("something went wrong");
-        console.log(error);
+        console.error(error);
       }
     };
     if (username) getUserMessage();
@@ -102,8 +140,11 @@ function Messages() {
             <img src={user.profileLink} alt="profileImage" />
           </div>
           <div className="message-details">
-            <div>{user.username}</div>
-            <div className="msg-panel-text">{msg.msg}</div>
+            <div >{user.username}</div>
+            <div className="msg-panel-text">
+              {msg.sender ? `${user.username}: ` : "you : "}
+              {msg.msg}
+            </div>
           </div>
         </div>
       </Link>
