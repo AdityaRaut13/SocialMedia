@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Tech from "./Tech";
 import { ImCancelCircle } from "react-icons/im";
 import "./Profile.css";
+import { getToken } from "../utility";
 
 function Profile() {
   const [user, setUser] = useState({});
@@ -11,10 +12,15 @@ function Profile() {
   const fileRef = useRef(null);
   const navigation = useNavigate();
   useEffect(() => {
+    const token = getToken("token");
+    if (!token) {
+      setTimeout(() => navigation("/auth/login"), 0);
+      return;
+    }
     axios
       .get(`http://localhost:3000/api/user/me`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
@@ -33,7 +39,7 @@ function Profile() {
         console.log(error);
         alert("Something went wrong calling tech.");
       });
-  }, []);
+  }, [navigation]);
   const { email, username, bio, workedOn, interested, projects, profileLink } =
     user;
   const setTechInUser = (Tech, isWorkedOn) => {
@@ -44,13 +50,17 @@ function Profile() {
   };
   const fileSelected = () => {
     const selectedFile = fileRef.current.files[0];
-    console.log("selected File : ", selectedFile);
     const formData = new FormData();
     formData.append("avatar", selectedFile);
+    const token = getToken("token");
+    if (!token) {
+      setTimeout(() => navigation("/auth/login"), 0);
+      return;
+    }
     axios
       .post(`http://localhost:3000/api/user/upload`, formData, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
@@ -63,7 +73,6 @@ function Profile() {
       })
       .catch((error) => {
         console.log(error.message);
-        alert("Something went wrong");
       });
   };
   const renderProject = (project, index) => {
@@ -106,97 +115,104 @@ function Profile() {
     );
   };
   return (
-    <div id="ProfileScreen">
-      <div className="image-div" onClick={imageOnClick}>
-        <input
-          type="file"
-          style={{ display: "none" }}
-          ref={fileRef}
-          onChange={fileSelected}
-        />
-        <img src={profileLink} alt="profileImage" />
-      </div>
-      <div className="bio-section">
-        <div className="indiv-sec">
-          <text>email</text>
-          <br />
-          <text>{email}</text>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div id="ProfileScreen">
+        <div className="image-div" onClick={imageOnClick}>
+          <input
+            type="file"
+            style={{ display: "none" }}
+            ref={fileRef}
+            onChange={fileSelected}
+          />
+          <img src={profileLink} alt="profileImage" />
         </div>
-        <div className="indiv-sec">
-          <text>username</text>
-          <br />
-          <text>{username}</text>
+        <div className="bio-section">
+          <div className="indiv-sec">
+            <text>email</text>
+            <br />
+            <text>{email}</text>
+          </div>
+          <div className="indiv-sec">
+            <text>username</text>
+            <br />
+            <text>{username}</text>
+          </div>
+          <div className="indiv-sec">
+            <text>bio&nbsp;</text>
+            {bio && <text>{bio.length}/140</text>}
+            <br />
+            <textarea
+              value={bio}
+              onChange={(e) => {
+                if (e.target.value.length > 140) return;
+                setUser({ ...user, bio: e.target.value });
+              }}
+              rows={4}
+              cols={45}
+            />
+          </div>
         </div>
-        <div className="indiv-sec">
-          <text>bio&nbsp;</text>
-          {bio && <text>{bio.length}/140</text>}
-          <br />
-          <textarea
-            value={bio}
-            onChange={(e) => {
-              if (e.target.value.length > 140) return;
-              setUser({ ...user, bio: e.target.value });
-            }}
-            rows={4}
-            cols={45}
+        <div className="tech-section">
+          <text>WorkedOn Technology </text>
+          <Tech
+            value={workedOn}
+            isWorkedOn={true}
+            list={tech}
+            setValue={setTechInUser}
           />
         </div>
-      </div>
-      <div className="tech-section">
-        <text>WorkedOn Technology </text>
-        <Tech
-          value={workedOn}
-          isWorkedOn={true}
-          list={tech}
-          setValue={setTechInUser}
-        />
-      </div>
-      <div className="tech-section">
-        <text>Interested Technology </text>
-        <Tech
-          value={interested}
-          isWorkedOn={false}
-          list={tech}
-          setValue={setTechInUser}
-        />
-      </div>
-      {projects && (
-        <div className="ps-projects">
-          <text>Projects</text>
-          {projects.map((project, index) => renderProject(project, index))}
-          <button
-            onClick={() => {
-              setUser({
-                ...user,
-                projects: [...projects, { title: "", description: "" }],
-              });
-            }}>
-            Add Projects
-          </button>
+        <div className="tech-section">
+          <text>Interested Technology </text>
+          <Tech
+            value={interested}
+            isWorkedOn={false}
+            list={tech}
+            setValue={setTechInUser}
+          />
         </div>
-      )}
-      <button
-        id="updateProfileButton"
-        onClick={() => {
-          axios
-            .put(`http://localhost:3000/api/user/`, user, {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            })
-            .then((response) => {
-              if (response.statusText === "OK")
-                setTimeout(() => {
-                  navigation("/");
-                }, 500);
-            })
-            .catch((error) => {
-              alert("Failed to update the profile.");
-              console.error(error);
-            });
-        }}>
-        Update Profile
-      </button>
+        {projects && (
+          <div className="ps-projects">
+            <text>Projects</text>
+            {projects.map((project, index) => renderProject(project, index))}
+            <button
+              onClick={() => {
+                setUser({
+                  ...user,
+                  projects: [...projects, { title: "", description: "" }],
+                });
+              }}>
+              Add Projects
+            </button>
+          </div>
+        )}
+        <button
+          id="updateProfileButton"
+          onClick={() => {
+            const token = getToken("token");
+            if (!token) {
+              setTimeout(() => navigation("/auth/login"), 0);
+              return;
+            }
+            axios
+              .put(`http://localhost:3000/api/user/`, user, {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              })
+              .then((response) => {
+                if (response.statusText === "OK")
+                  setTimeout(() => {
+                    navigation("/");
+                  }, 500);
+              })
+              .catch((error) => {
+                alert("Failed to update the profile.");
+                console.error(error);
+              });
+          }}>
+          Update Profile
+        </button>
+      </div>
     </div>
   );
 }

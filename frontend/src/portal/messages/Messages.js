@@ -1,11 +1,12 @@
 /** @format */
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useCallback, useRef, useState } from "react";
 import axios from "axios";
-import { Outlet, useParams, Link } from "react-router-dom";
+import { Outlet, useParams, Link, useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import "./Message.css";
 import jwt_decode from "jwt-decode";
+import { getToken } from "../utility";
 
 function Messages() {
   const { username } = useParams();
@@ -13,13 +14,19 @@ function Messages() {
   const [userMsgPanel, setUserMsgPanel] = useState({});
   const usersMsgPanelRef = useRef(null);
   const webSocket = useRef(null);
-  const getRecentMessages = async () => {
+  const navigation = useNavigate();
+  const getRecentMessages = useCallback(async () => {
     try {
+      const token = getToken("token");
+      if (!token) {
+        setTimeout(() => navigation("/auth/login"), 0);
+        return;
+      }
       const res = await axios.get(
         `http://localhost:3000/api/messages/recentMessages`,
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -33,11 +40,16 @@ function Messages() {
     } catch (error) {
       console.error(error);
     }
-  };
+  }, [navigation]);
   useEffect(() => {
+    const token = getToken("token");
+    if (!token) {
+      setTimeout(() => navigation("/auth/login"), 0);
+      return;
+    }
     webSocket.current = io(`http://localhost:3000/`, {
       auth: {
-        token: `Bearer ${localStorage.getItem("token")}`,
+        token: `Bearer ${token}`,
       },
     });
     webSocket.current.on("error", (err) => alert(err));
@@ -58,13 +70,15 @@ function Messages() {
               sender: msg.sender._id.toString(),
               receiver: msg.receiver._id.toString(),
               msg: msg.msg,
-              t: msg.t,
+              t: new Date(msg.t),
             },
           ],
         };
       });
       setReadMsgs((prev) => {
-        const userId = jwt_decode(localStorage.getItem("token")).id;
+        const userId = jwt_decode(
+          JSON.parse(localStorage.getItem("token")).value
+        ).id;
         const otherUser = userId === msg.sender._id ? msg.receiver : msg.sender;
         const result = [];
         const insertMsg = {
@@ -89,19 +103,24 @@ function Messages() {
     return () => {
       webSocket.current.disconnect();
     };
-  }, []);
+  }, [navigation]);
 
   useEffect(() => {
     getRecentMessages();
-  }, []);
+  }, [getRecentMessages]);
   useEffect(() => {
     const getUserMessage = async () => {
       try {
+        const token = getToken("token");
+        if (!token) {
+          setTimeout(() => navigation("/auth/login"), 0);
+          return;
+        }
         const res = await axios.get(
           `http://localhost:3000/api/messages/${username}`,
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
@@ -122,7 +141,7 @@ function Messages() {
       }
     };
     if (username) getUserMessage();
-  }, [username]);
+  }, [username, navigation]);
   const renderPanelMsg = (msg) => {
     const user = msg.sender ?? msg.receiver ?? {};
     return (
@@ -140,7 +159,7 @@ function Messages() {
             <img src={user.profileLink} alt="profileImage" />
           </div>
           <div className="message-details">
-            <div >{user.username}</div>
+            <div>{user.username}</div>
             <div className="msg-panel-text">
               {msg.sender ? `${user.username}: ` : "you : "}
               {msg.msg}

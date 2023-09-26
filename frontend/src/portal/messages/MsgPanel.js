@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { AiOutlineSend } from "react-icons/ai";
 import "./Message.css";
 
@@ -7,6 +7,7 @@ function MsgPanel() {
   const [{ me, messageSend, user }, webSocket] = useOutletContext();
   const [newMsg, setNewMsg] = useState("");
   const refPanel = useRef(null);
+  const navigation = useNavigate();
   // eslint-disable-next-line no-unused-vars
   const convertDate = (date) => {
     return date.toISOString().split("T")[1].split(".")[0];
@@ -20,7 +21,7 @@ function MsgPanel() {
           borderRadius: "1rem",
           [isSender ? "borderBottomRightRadius" : "borderBottomLeftRadius"]:
             "0",
-          textAlign: isSender ? "right" : "left",
+          textAlign: isSender ? "end" : "start",
           backgroundColor: isSender ? "#DCC9C4" : "#6db7df",
         }}
         className="msg-text"
@@ -45,7 +46,11 @@ function MsgPanel() {
   return (
     messageSend && (
       <div className="msg-text-container">
-        <div className="msg-text-profile">
+        <div
+          className="msg-text-profile"
+          onClick={() => {
+            setTimeout(() => navigation(`/${user.username}`), 0);
+          }}>
           <div className="msg-img-container">
             <img src={user.profileLink} alt="profileImage" />
           </div>
@@ -65,7 +70,7 @@ function MsgPanel() {
             onChange={(e) => setNewMsg(e.target.value)}
           />
           <button onClick={sendMsg}>
-            <AiOutlineSend size={"auto"} />
+            <AiOutlineSend />
           </button>
         </div>
       </div>

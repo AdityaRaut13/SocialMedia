@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
+import { setToken } from "../portal/utility";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -26,7 +27,7 @@ function LoginForm() {
           return;
         }
         localStorage.clear();
-        localStorage.setItem("token", token);
+        setToken("token", token);
         setTimeout(() => {
           navigation("/");
         }, 500);

@@ -3,15 +3,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import { getToken } from "../utility";
 
 function Home() {
   const [otherUsers, setOtherUsers] = useState([]);
   const navigation = useNavigate();
   useEffect(() => {
+    const token = getToken("token");
+    if (!token) {
+      setTimeout(() => navigation("/auth/login"), 0);
+      return;
+    }
     axios
       .get("http://localhost:3000/api/user", {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
@@ -20,7 +26,7 @@ function Home() {
       .catch((error) => {
         alert(error.message);
       });
-  }, []);
+  }, [navigation]);
   const goToProfile = (username) => {
     setTimeout(() => {
       navigation(`/${username}`);

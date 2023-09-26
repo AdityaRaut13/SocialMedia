@@ -1,15 +1,26 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { getToken } from "../utility";
 
 function UserProfile() {
   const { username } = useParams();
   const [user, setUser] = useState({});
+  const navigation = useNavigate();
   useEffect(() => {
+    const token = getToken("token");
+    if (!token) {
+      setTimeout(() => navigation("/auth/login"), 0);
+      return;
+    }
     axios
-      .get(`http://localhost:3000/api/user/${username}`)
+      .get(`http://localhost:3000/api/user/${username}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         setUser(response.data);
       })
@@ -17,7 +28,7 @@ function UserProfile() {
         console.error(error);
         alert("Something went wrong");
       });
-  }, [username]);
+  }, [username, navigation]);
   const { email, bio, workedOn, interested, projects, profileLink } = user;
   const renderIcons = (icon) => {
     return (

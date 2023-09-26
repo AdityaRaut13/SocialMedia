@@ -2,11 +2,13 @@ import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import SideBar from "./layout/sidebar";
 import "./App.css";
+import { getToken } from "./portal/utility";
 function App() {
   const navigation = useNavigate();
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token || token === "undefined") {
+    const token = getToken("token");
+    console.log(token);
+    if (!token) {
       navigation("/auth/login");
     }
   }, [navigation]);

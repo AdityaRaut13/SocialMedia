@@ -9,9 +9,30 @@
 
 body {
   font-size: 16px;
-  background-color: #5e5b5b;
   color: white;
   font-family: "Open Sans", sans-serif;
+  --s: 80px;
+  --c1: #5c524f;
+  --c2: #26313a;
+  --_g: var(--c2) 6% 14%, var(--c1) 16% 24%, var(--c2) 26% 34%,
+    var(--c1) 36% 44%, var(--c2) 46% 54%, var(--c1) 56% 64%, var(--c2) 66% 74%,
+    var(--c1) 76% 84%, var(--c2) 86% 94%;
+  background: radial-gradient(
+      100% 100% at 100% 0,
+      var(--c1) 4%,
+      var(--_g),
+      #0008 96%,
+      #0000
+    ),
+    radial-gradient(
+        100% 100% at 0 100%,
+        #0000,
+        #0008 4%,
+        var(--_g),
+        var(--c1) 96%
+      )
+      var(--c1);
+  background-size: var(--s) var(--s);
 }
 ::-webkit-scrollbar {
   width: 0.25rem;
@@ -42,6 +63,7 @@ body {
   height: 25%;
   font-size: medium;
   border-radius: 10px;
+  gap: 0.5rem;
 }
 #login input {
   padding: 5px;
@@ -107,31 +129,6 @@ body {
 
 #Home {
   /* background-color: #242121; */
-  --s: 80px;
-  --c1: #5c524f;
-  --c2: #26313a;
-  --_g: var(--c2) 6% 14%, var(--c1) 16% 24%, var(--c2) 26% 34%,
-    var(--c1) 36% 44%, var(--c2) 46% 54%, var(--c1) 56% 64%, var(--c2) 66% 74%,
-    var(--c1) 76% 84%, var(--c2) 86% 94%;
-  background: radial-gradient(
-      100% 100% at 100% 0,
-      var(--c1) 4%,
-      var(--_g),
-      #0008 96%,
-      #0000
-    ),
-    radial-gradient(
-        100% 100% at 0 100%,
-        #0000,
-        #0008 4%,
-        var(--_g),
-        var(--c1) 96%
-      )
-      var(--c1);
-  background-size: var(--s) var(--s);
-  height: max-content;
-  height: 100%;
-
   padding: 1rem;
 }
 
