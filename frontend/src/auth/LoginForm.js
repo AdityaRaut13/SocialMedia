@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../App.css";
-import { useNavigate } from "react-router-dom";
+import "./auth.css";
+import { useNavigate, Link } from "react-router-dom";
 import { setToken } from "../portal/utility";
 
 function LoginForm() {
@@ -33,13 +33,13 @@ function LoginForm() {
         }, 500);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
         alert("Oops! Some error occured.");
       });
     event.preventDefault();
   };
   return (
-    <form id="login" onSubmit={onSubmitCall}>
+    <form className="auth-box" onSubmit={onSubmitCall}>
       <label htmlFor="email" style={{ alignSelf: "baseline" }}>
         Email
       </label>
@@ -63,6 +63,10 @@ function LoginForm() {
       />
       <br />
       <button type="submit">Sign in</button>
+      <p>
+        Don't have a account{" ? "}
+        <Link to="/auth/createAccount">Create an account</Link>
+      </p>
     </form>
   );
 }

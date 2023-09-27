@@ -104,25 +104,26 @@ const getRecentMessages = handleAsync(async (req, res) => {
     },
     { $sort: { t: -1 } },
   ]);
-  console.log(messageSend);
   const msgMap = new Map();
   const result = [];
   for (let msg of messageSend) {
     if (msg.sender === undefined && msg.receiver === undefined) {
-      result.push(msg);
       continue;
     }
     const person = msg.sender ?? msg.receiver;
     const mapMsg = msgMap.get(person._id.toString());
     if (mapMsg) {
       const msgPushed = mapMsg.t >= msg.t ? mapMsg : msg;
+      msgMap.delete(person._id.toString());
       result.push(msgPushed);
       continue;
     }
     msgMap.set(person._id.toString(), msg);
   }
-  result.sort((a, b) => b.t - a.t);
-  res.send(result);
+  msgMap.forEach((value) => {
+    result.push(value);
+  });
+  res.send(result.sort((a, b) => b.t - a.t));
 }, errorHandler);
 
 /**

@@ -15,6 +15,13 @@ const jwt = require("jsonwebtoken");
  */
 const getUser = handleAsync(async (req, res) => {
   let userTech = [...req.user.workedOn, ...req.user.interested];
+  if (userTech.length === 0) {
+    let user = await Users.find({})
+      .populate("workedOn interested")
+      .select("-password");
+    res.json(user);
+    return;
+  }
   let user = await Users.find({})
     .or([{ workedOn: { $in: userTech } }, { interested: { $in: userTech } }])
     .populate("workedOn interested")
@@ -140,7 +147,7 @@ const uploadPic = handleAsync(async (req, res) => {
   let link = `http://localhost:${process.env.PORT}/images/${req.file.filename}`;
   req.user.profileLink = link;
   await req.user.save();
-  res.status(200).json({ status: "Changed Successfully" });
+  res.status(200).json({ status: "Changed Successfully", link });
 }, errorHandler);
 
 /**

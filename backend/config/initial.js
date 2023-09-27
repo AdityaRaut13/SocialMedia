@@ -87,7 +87,20 @@ async function randomUser(number) {
     let techID = t.map((value) => value._id);
     try {
       for (let i = 0; i < number; i++) {
-        const result = await createRandomUser(techID);
+        let result = await createRandomUser(techID);
+        let isThere = await users.findOne({
+          username: result.user.username,
+        });
+        isThere =
+          isThere || (await users.findOne({ email: result.user.email }));
+        while (isThere) {
+          result = await createRandomUser(techID);
+          isThere = await users.findOne({
+            username: result.user.username,
+          });
+          isThere =
+            isThere || (await users.findOne({ email: result.user.email }));
+        }
         const content =
           [result.user.email, result.config.pass, result.user.username].join(
             ","

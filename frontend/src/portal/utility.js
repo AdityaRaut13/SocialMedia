@@ -1,10 +1,7 @@
-import jwtDecode from "jwt-decode";
-
 export const setToken = (key, value) => {
-  const decode = jwtDecode(value);
   const item = {
     value,
-    expiration: new Date(decode.exp),
+    expiration: new Date().getTime() + 1 * 60 * 60 * 1000,
   };
   localStorage.setItem(key, JSON.stringify(item));
 };

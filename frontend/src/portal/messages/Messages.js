@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect, useCallback, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Outlet, useParams, Link, useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
@@ -15,32 +15,6 @@ function Messages() {
   const usersMsgPanelRef = useRef(null);
   const webSocket = useRef(null);
   const navigation = useNavigate();
-  const getRecentMessages = useCallback(async () => {
-    try {
-      const token = getToken("token");
-      if (!token) {
-        setTimeout(() => navigation("/auth/login"), 0);
-        return;
-      }
-      const res = await axios.get(
-        `http://localhost:3000/api/messages/recentMessages`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setReadMsgs(() => {
-        const result = [];
-        for (let msg of res.data) {
-          result.push({ ...msg, t: new Date(msg.t) });
-        }
-        return result;
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  }, [navigation]);
   useEffect(() => {
     const token = getToken("token");
     if (!token) {
@@ -106,8 +80,34 @@ function Messages() {
   }, [navigation]);
 
   useEffect(() => {
+    const getRecentMessages = async () => {
+      try {
+        const token = getToken("token");
+        if (!token) {
+          setTimeout(() => navigation("/auth/login"), 0);
+          return;
+        }
+        const res = await axios.get(
+          `http://localhost:3000/api/messages/recentMessages`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setReadMsgs(() => {
+          const result = [];
+          for (let msg of res.data) {
+            result.push({ ...msg, t: new Date(msg.t) });
+          }
+          return result;
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    };
     getRecentMessages();
-  }, [getRecentMessages]);
+  }, [navigation]);
   useEffect(() => {
     const getUserMessage = async () => {
       try {
@@ -116,8 +116,9 @@ function Messages() {
           setTimeout(() => navigation("/auth/login"), 0);
           return;
         }
+        console.log(token);
         const res = await axios.get(
-          `http://localhost:3000/api/messages/${username}`,
+          `http://localhost:3000/api/messages/users/${username}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -125,15 +126,16 @@ function Messages() {
           }
         );
         if (res.data.messageSend.length === 0) {
-          setReadMsgs(() => [{ receiver: res.data.user, msg: "" }]);
-          return;
+          setReadMsgs((prev) => [
+            { receiver: res.data.user, msg: "" },
+            ...prev,
+          ]);
         }
         setUserMsgPanel(() => {
           const result = { ...res.data, messageSend: [] };
           for (let msg of res.data.messageSend) {
             result.messageSend.push({ ...msg, t: new Date(msg.t) });
           }
-          console.log("result : ", result);
           return result;
         });
       } catch (error) {
@@ -150,18 +152,16 @@ function Messages() {
         to={`/messages/${user.username}`}
         key={`messages-users-${user._id}`}>
         <div
-          className="message"
-          style={{
-            backgroundColor:
-              userMsgPanel?.user?._id === user._id ? "#4e95bc" : "#447792",
-          }}>
+          className={`message ${
+            userMsgPanel?.user?._id === user._id && "message-selected"
+          }`}>
           <div className="msg-img-container">
             <img src={user.profileLink} alt="profileImage" />
           </div>
           <div className="message-details">
             <div>{user.username}</div>
             <div className="msg-panel-text">
-              {msg.sender ? `${user.username}: ` : "you : "}
+              {msg.msg && (msg.sender ? `${user.username}: ` : "you : ")}
               {msg.msg}
             </div>
           </div>

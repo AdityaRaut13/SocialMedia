@@ -7,7 +7,6 @@ function App() {
   const navigation = useNavigate();
   useEffect(() => {
     const token = getToken("token");
-    console.log(token);
     if (!token) {
       navigation("/auth/login");
     }

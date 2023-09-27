@@ -4,6 +4,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { getToken } from "../utility";
+import { IoIosArrowDropright } from "react-icons/io";
+import { IconContext } from "react-icons/lib";
+import { TbMessageCode } from "react-icons/tb";
 
 function Home() {
   const [otherUsers, setOtherUsers] = useState([]);
@@ -32,7 +35,27 @@ function Home() {
       navigation(`/${username}`);
     });
   };
-  const renderIcons = (icons) => {
+  const renderIcons = (icons, index) => {
+    if (index > 4) {
+      return;
+    }
+    if (index === 4) {
+      return (
+        <IconContext.Provider
+          value={{
+            style: {
+              width: "100%",
+              boxShadow: "1px",
+              color: "green",
+              height: "100%",
+            },
+          }}>
+          <div className="icon">
+            <IoIosArrowDropright />
+          </div>
+        </IconContext.Provider>
+      );
+    }
     return (
       <div className="icon">
         <img src={icons.link} alt={"icon"} />
@@ -50,30 +73,30 @@ function Home() {
           </div>
           <div className="section-1-child">{user.username}</div>
           <div className="section-1-child">{user.email}</div>
-          <Link
-            style={{ textDecoration: "none" }}
-            className="message-button"
-            to={`/messages/${user.username}`}>
-            Message
-          </Link>
         </div>
         <div
           className="user-section-2"
           onClick={() => goToProfile(user.username)}>
-          {workedOn && (
+          {workedOn && workedOn.length > 0 && (
             <div className="section-2-child">
-              {workedOn.map((icons) => renderIcons(icons))}
+              {workedOn.map((icons, index) => renderIcons(icons, index))}
               {/* {JSON.stringify(user.worked_on_container)} */}
             </div>
           )}
-          {interested && (
+          {interested && interested.length > 0 && (
             <div className="section-2-child">
               {/* {JSON.stringify(user.interested)} */}
-              {interested.map((icons) => renderIcons(icons))}
+              {interested.map((icons, index) => renderIcons(icons, index))}
             </div>
           )}
           {bio && <div className="section-2-child">{user.bio}</div>}
         </div>
+        <Link
+          style={{ textDecoration: "none" }}
+          className="message-button"
+          to={`/messages/${user.username}`}>
+          <TbMessageCode size={"20px"} />
+        </Link>
       </div>
     );
   };

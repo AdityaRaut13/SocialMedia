@@ -45,7 +45,6 @@ const WebSocketServer = (app) => {
         await saveMsg.save();
         let serverMsg = await Messages.aggregate([
           { $match: { _id: saveMsg._id } },
-          { $limit: 1 },
           {
             $lookup: {
               from: "users",
@@ -101,9 +100,7 @@ const WebSocketServer = (app) => {
             },
           },
         ]);
-        console.log(serverMsg);
         serverMsg = serverMsg[0];
-
         socket.emit("message", serverMsg);
         const otherUserSocket = CurrentUserMap.get(newMsg.user);
         if (!otherUserSocket) {

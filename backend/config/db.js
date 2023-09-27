@@ -6,7 +6,6 @@ require("dotenv").config({ path: ".env" });
 function connect() {
   try {
     mongoose.set("strictQuery", false);
-    mongoose.set("autoIndex", false);
     mongoose.connect(process.env.db_path);
   } catch (err) {
     console.log(`Not able to Connect to Database.\n.${err}`.cyan);

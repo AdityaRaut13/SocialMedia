@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose");
 
-let project = mongoose.Schema({
+let project = new mongoose.Schema({
   title: {
     type: String,
     required: true,

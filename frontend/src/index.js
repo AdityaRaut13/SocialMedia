@@ -12,6 +12,7 @@ import UserProfile from "./portal/home/UserProfile";
 import Profile from "./portal/profile/Profile";
 import Messages from "./portal/messages/Messages";
 import MsgPanel from "./portal/messages/MsgPanel";
+import CreateAccount from "./auth/CreateAccount";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,7 +20,8 @@ root.render(
     <BrowserRouter basename="/">
       <Routes>
         <Route path="/auth" element={<Auth />}>
-          <Route path={"login"} element={<LoginForm />} />
+          <Route index path={"login"} element={<LoginForm />} />
+          <Route path={"createAccount"} element={<CreateAccount />} />
         </Route>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />

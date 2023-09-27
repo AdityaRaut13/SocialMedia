@@ -64,11 +64,10 @@ function Profile() {
         },
       })
       .then((response) => {
-        console.log(response);
         if (response.statusText === "OK") {
-          setTimeout(() => {
-            navigation(`/profile`);
-          }, 500);
+          setUser({ ...user, profileLink: response.data.link });
+        } else {
+          throw new Error("someThing went wrong");
         }
       })
       .catch((error) => {
@@ -79,8 +78,7 @@ function Profile() {
     return (
       <div key={index} className="profile-project">
         <div className="proj-indiv-sec">
-          <text>Title</text>
-          <br />
+          <p>Title</p>
           <input
             type="text"
             value={project.title}
@@ -91,8 +89,7 @@ function Profile() {
           />
         </div>
         <div className="proj-indiv-sec">
-          <text>Description</text>
-          <br />
+          <p>Description</p>
           <textarea
             value={project.description}
             cols={45}
@@ -128,19 +125,18 @@ function Profile() {
         </div>
         <div className="bio-section">
           <div className="indiv-sec">
-            <text>email</text>
-            <br />
-            <text>{email}</text>
+            <p>email</p>
+            <p>{email}</p>
           </div>
           <div className="indiv-sec">
-            <text>username</text>
-            <br />
-            <text>{username}</text>
+            <p>username</p>
+            <p>{username}</p>
           </div>
           <div className="indiv-sec">
-            <text>bio&nbsp;</text>
-            {bio && <text>{bio.length}/140</text>}
-            <br />
+            <p>
+              bio&nbsp;
+              {bio && `${bio.length}/140`}
+            </p>
             <textarea
               value={bio}
               onChange={(e) => {
@@ -153,7 +149,7 @@ function Profile() {
           </div>
         </div>
         <div className="tech-section">
-          <text>WorkedOn Technology </text>
+          <p>WorkedOn Technology </p>
           <Tech
             value={workedOn}
             isWorkedOn={true}
@@ -162,7 +158,7 @@ function Profile() {
           />
         </div>
         <div className="tech-section">
-          <text>Interested Technology </text>
+          <p>Interested Technology </p>
           <Tech
             value={interested}
             isWorkedOn={false}
@@ -172,7 +168,7 @@ function Profile() {
         </div>
         {projects && (
           <div className="ps-projects">
-            <text>Projects</text>
+            <p>Projects</p>
             {projects.map((project, index) => renderProject(project, index))}
             <button
               onClick={() => {

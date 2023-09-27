@@ -6,7 +6,7 @@ const userValidation = async (_id) => {
   const user = await User.findById(_id);
   return !!user;
 };
-let message = mongoose.Schema(
+let message = new mongoose.Schema(
   {
     sender: {
       type: mongoose.Schema.Types.ObjectId,

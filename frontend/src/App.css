@@ -12,8 +12,8 @@ body {
   color: white;
   font-family: "Open Sans", sans-serif;
   --s: 80px;
-  --c1: #5c524f;
-  --c2: #26313a;
+  --c1: #423f3f;
+  --c2: #2d3033;
   --_g: var(--c2) 6% 14%, var(--c1) 16% 24%, var(--c2) 26% 34%,
     var(--c1) 36% 44%, var(--c2) 46% 54%, var(--c1) 56% 64%, var(--c2) 66% 74%,
     var(--c1) 76% 84%, var(--c2) 86% 94%;
@@ -43,41 +43,6 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #481f1f;
 }
-.Auth {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-/* 
-  This is the start of the login form screen css;
-*/
-
-#login {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(175, 161, 148);
-  padding: 5%;
-  width: 15%;
-  height: 25%;
-  font-size: medium;
-  border-radius: 10px;
-  gap: 0.5rem;
-}
-#login input {
-  padding: 5px;
-  height: 25%;
-  border: none;
-  border-radius: 10px;
-  font-size: medium;
-}
-#login button[type="submit"] {
-  height: 25%;
-  border: none;
-  border-radius: 10px;
-  background-color: white;
-}
 
 /* 
   This is for the sidebar of screen
@@ -94,6 +59,7 @@ body {
   background-color: black;
   top: 0;
   transition: 0.3s ease;
+  z-index: 1000;
 }
 #sidebar:hover {
   width: 8rem;
@@ -139,29 +105,36 @@ body {
   padding: 1rem;
 }
 .message-button {
-  background-color: rgba(255, 255, 0, 0.271);
-  color: black;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  font-size: 0.6rem;
-  width: 90%;
-  align-items: center;
+  display: none;
 }
 
 .user-card {
   display: flex;
   height: auto;
   width: var(--card-width);
-  background-color: #dab5a1;
+  background-color: #bba27e;
+  background-color: #c46d3e;
   border-radius: 10px;
   padding: 10px;
   transition: transform 0.3s ease-in-out;
   gap: 0.5rem;
+  position: relative;
 }
 .user-card:hover {
   box-shadow: 0.5rem 0.5rem 1rem black;
   transform: scale(1.25);
   /* height: max-content; */
+}
+.user-card:hover .message-button {
+  display: block;
+  background-color: whitesmoke;
+  color: green;
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  padding: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .user-section-1,
@@ -222,8 +195,8 @@ body {
   width: 90%;
   text-overflow: ellipsis;
   overflow-x: hidden;
-  background-color: #a75252;
-  color: #e4d2d2;
+  background-color: #e6e1e1;
+  color: #000000;
   font-size: 0.6rem;
 }
 .section-2-child {
@@ -233,12 +206,14 @@ body {
   padding: 0.3rem;
   width: 95%;
   flex: auto;
-  flex-wrap: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   display: flex;
   align-items: center;
-  justify-content: center;
   background-color: white;
+  position: relative;
   color: black;
+  padding-top: 0.5rem;
 }
 
 .profile-container {
@@ -253,6 +228,12 @@ body {
   padding: 1rem;
 }
 
+.home-profile-cont {
+  width: 80%;
+  height: 100vh;
+  max-height: fit-content;
+}
+
 .profile-cont-1 {
   display: flex;
   background-color: rgb(34, 32, 32);
@@ -264,12 +245,21 @@ body {
   border-radius: 0.5rem;
   flex-wrap: wrap;
   align-items: center;
+  position: relative;
 }
 .image {
   height: 150px;
   width: 150px;
   border-radius: 50%;
   overflow: hidden;
+}
+.message-tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #f3f3f3;
+  padding: 0.7rem;
+  border-bottom-right-radius: 1rem;
 }
 
 .image img {
@@ -317,34 +307,32 @@ body {
 
 .projects {
   background-color: #a75252;
-  padding: 1rem;
+  background-color: #c46d3e;
+  background-color: #c06f43;
+  padding: 2rem;
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  margin-left: 20%;
-  margin-right: 20%;
+  justify-content: center;
+  align-items: center;
   gap: 2rem;
 }
 .projects div:last-child {
   margin-bottom: 1rem;
 }
 .project {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background-color: #a88080;
+  background-color: #ffffff;
   padding: 1rem;
+  width: fit-content;
+  width: 70%;
   border-radius: 1rem;
-  box-shadow: 5px 10px;
-  overflow: hidden;
   color: black;
 }
 
 .tech {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  background-color: wheat;
+  background-color: rgb(253, 253, 253);
   align-items: center;
   padding: 0.5rem;
   border-radius: 1rem;

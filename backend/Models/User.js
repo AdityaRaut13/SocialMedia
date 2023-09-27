@@ -14,7 +14,7 @@ const techValidation = async (array) => {
   return true;
 };
 
-let user = mongoose.Schema({
+let user = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -64,4 +64,5 @@ let user = mongoose.Schema({
     type: String,
   },
 });
+user.index({ username: 1, email: 1, _id: 1 });
 module.exports = mongoose.model("user", user);

@@ -8,6 +8,6 @@ const { auth } = require("../middleware/auth");
 const errorHandler = require("../middleware/error");
 
 router.route("/recentMessages").get(auth, getRecentMessages);
-router.get("/:username", auth, getUserMessage);
+router.get("/users/:username", auth, getUserMessage);
 router.use(errorHandler);
 module.exports = router;

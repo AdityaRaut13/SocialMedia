@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { AiOutlineSend } from "react-icons/ai";
 import "./Message.css";
+import { IconContext } from "react-icons/lib";
 
 function MsgPanel() {
   const [{ me, messageSend, user }, webSocket] = useOutletContext();
@@ -22,9 +23,8 @@ function MsgPanel() {
           [isSender ? "borderBottomRightRadius" : "borderBottomLeftRadius"]:
             "0",
           textAlign: isSender ? "end" : "start",
-          backgroundColor: isSender ? "#DCC9C4" : "#6db7df",
         }}
-        className="msg-text"
+        className={`msg-text ${isSender ? "sender" : "receiver"}`}
         key={`msg-${
           msg.sender?._id?.toString() + msg.receiver?._id?.toString() ?? "me"
         }-${msg.t.toISOString()}`}>
@@ -70,7 +70,12 @@ function MsgPanel() {
             onChange={(e) => setNewMsg(e.target.value)}
           />
           <button onClick={sendMsg}>
-            <AiOutlineSend />
+            <IconContext.Provider
+              value={{ style: { width: "100%", height: "100%" } }}>
+              <div className="icon">
+                <AiOutlineSend />
+              </div>
+            </IconContext.Provider>
           </button>
         </div>
       </div>

@@ -1,0 +1,35 @@
+.Auth {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+/* 
+  This is the start of the login form screen css;
+*/
+
+.auth-box {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(175, 161, 148);
+  padding: 5%;
+  width: 20%;
+  height: 35%;
+  font-size: medium;
+  border-radius: 10px;
+  gap: 0.5rem;
+}
+.auth-box input {
+  padding: 5px;
+  height: 25%;
+  border: none;
+  border-radius: 10px;
+  font-size: medium;
+}
+.auth-box button[type="submit"] {
+  height: 25%;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+}
