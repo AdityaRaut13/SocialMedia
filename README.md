@@ -17,3 +17,12 @@ for other users to see easily. This website could be used for group formation.
 3. Run `npm run server` in the root of your application. This will run the node server.
 4. Run the following command into another terminal :
    `cd frontend && npm start`
+## Demo video
+
+
+https://github.com/AdityaRaut13/SocialMedia/assets/102903554/bfe00a5f-9619-4cd7-b602-4fc74b4848c9
+
+
+
+https://github.com/AdityaRaut13/SocialMedia/assets/102903554/ac42bc3e-e7ef-489e-a433-b8b59267ac22
+
